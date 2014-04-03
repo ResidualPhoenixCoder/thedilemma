@@ -1,3 +1,6 @@
+Game: The Dilemma
+=================
+
 <p>
 The Dilemma is a trivia game played between two players at a time. 
 A question is presented to both players at which point each player has ten seconds to 
@@ -26,8 +29,8 @@ potentially more rewarding, it comes with a negative point penalty if the questi
 incorrectly (incentive to be cooperative).
 </p>
 
-CakePHP
-=======
+Technology: CakePHP
+===================
 
 [![CakePHP](http://cakephp.org/img/cake-logo.png)](http://www.cakephp.org)
 
