@@ -1,0 +1,3 @@
+
+<font size="20">Hello, CakeWorld!</font>
+<?php echo $html->link('Player Login', array('controller'=>'dilemmas', 'action' => 'display', 'player_login')); ?>

@@ -1,0 +1,7 @@
+<h1>Player Login Page</h1>
+<p>
+This is where a player enters his/her credentials to login to the application.  
+Upon login, the user should either enter into a lobby or be automatically paired
+up with a player that is currently online.  If there are no players online, the player
+can play against a simple bot.
+</p>
