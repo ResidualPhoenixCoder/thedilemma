@@ -1,6 +1,6 @@
 body {
 	font:normal 15px Arial;
-	background-image:url('/img/TheDilemma_BG.jpg');
+	background-image:url('/img/TheDilemma_BG.png');
 }
 
 /*dilemmas Layout - Main Components*/
@@ -53,7 +53,7 @@ body {
 	margin: 0px 20px 20px 20px;
 	padding: 10px;
 	border-radius: 15px;
-	background-color: rgba(255, 255, 255, 0.6);
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 
