@@ -1,0 +1,6 @@
+For testers
+
+To test run this php code
+1.install php and apache
+2.run `php -S localhost:8000` in your terminal
+3.go to `localhost:8000` in your we browser
