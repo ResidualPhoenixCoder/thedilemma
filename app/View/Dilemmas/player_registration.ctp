@@ -1,18 +1,41 @@
-<h1>Player Registration Page</h1>
-<p>
-A new user registers as player on this application via this page.  It will ask for the following:
-<ul>
-	<li>First Name</li>
-	<li>Last Name</li>
-	<li>DOB</li>
-	<li>Desired Username</li>
-	<li>Password</li>
-	<li>Repeat Password</li>
-	<li>E-mail Address</li>
-</ul>
-</p>
+<script>
+$(function() {
+	$("#btn_register")
+		.button()
+		.click(function( event ) {
+			window.location='';
+		});
+	$("#txf_date").datepicker();
+});
+</script>
+<style>
+#main {
+	width: 500px;
+	margin-top: -250px;
+	margin-left: -250px;
+}
 
-<p>
-If any information above is erroneous, then the application will let the user know above the fields of interest.
-Otherwise, registration of the user will occur and he/she will be automatically logged in.
-</p>
+table {
+	border: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#btn_register{
+	width: 360px;
+}
+</style>
+
+<h1>REGISTER PLAYER</h1>
+<div>
+	<table id="#treg">
+		<tr><td>First Name:</td><td><input type="text" id="txf_first" /></td></tr>
+		<tr><td>Last Name:</td><td><input type="text" id="txf_last" /></td><tr>
+		<tr><td>Date:</td><td><input type="text" id="txf_date"></td></tr>
+		<tr><td>Username:</td><td><input type="text" id="txf_user" /></td></tr>
+		<tr><td>Email:</td><td><input type="text" id="txf_email" /></td></tr>
+		<tr><td>Password:</td><td><input type="password" id="txf_pswrd" /></td></tr>
+		<tr><td>Password (Confirm):</td><td><input type="password" id="txf_pswrd_cnfrm" /></td></tr>
+	</table><br />
+</div>
+<div style="text-align:center;"><button id="btn_register">REGISTER</button></div><br />

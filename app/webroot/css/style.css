@@ -1,0 +1,54 @@
+.ui-menu { width: 150px; }
+
+h1 {
+	text-align: center;
+	font-size: xx-large;
+	margin: 15px;
+}
+
+body {
+	background-color: #F5F3EE;
+	color: #FFFFFF;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+#main {
+	width: 400px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -200px;
+	border: 10px solid;
+	border-color: #4A96AD;
+	background-color: #7D1935;
+	box-shadow: 8px 8px 15px #949494;
+}
+
+#menu {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.ctext {
+	text-align: center;
+}
+
+p {
+	font-size: small;
+}
+
+label {
+	font-weight: bold;
+}
+
+.block {
+	padding-left: 20px;
+	padding-right: 20px;
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+#txf_user, #txf_pswrd, #txf_pswrd_cnfrm, #txf_date, #txf_first, #txf_last, #txf_email {
+	width: 250px;
+	height: 25px;
+}
