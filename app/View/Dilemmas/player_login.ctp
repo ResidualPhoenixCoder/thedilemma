@@ -2,13 +2,13 @@
 	$(function() {
 		$("#btn_login")
 			.button()
-			.click(function( event ) {
+			.click(function(event) {
 				window.location="/dilemmas/display/player_login";
 			});
 
 		$("#btn_register")
 			.button()
-			.click(function( event ) {
+			.click(function(event) {
 				window.location="/dilemmas/display/player_registration";
 			});
 	});

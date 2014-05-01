@@ -48,7 +48,11 @@ label {
 	text-justify: inter-word;
 }
 
-#txf_user, #txf_pswrd, #txf_pswrd_cnfrm, #txf_date, #txf_first, #txf_last, #txf_email {
-	width: 250px;
+.registration_fields {
+    	width: 250px;
 	height: 25px;
+}
+
+.border_error {
+    border: 1px solid red;
 }
