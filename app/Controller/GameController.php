@@ -14,6 +14,7 @@
 class GameController extends AppController{
     
     public function rounds() {
+        $this->layout = 'round_lay';
         //$this->loadModel("Question");
         //$data = $this->request->input('json_decode', true);
         //print_r($this->request->data);
