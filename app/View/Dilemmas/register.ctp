@@ -60,8 +60,8 @@ function validate(dataObj) {
         if(dataObj.password !== passc.val()) {
             pass.addClass('border_error');
             passc.addClass('border_error');
-            result = false;
             showErrorMsg("Passwords do not match.");
+            return false;
         } else {
             pass.removeClass('border_error');
             passc.removeClass('border_error');
@@ -98,8 +98,7 @@ $(function() {
                                 hideErrorMsg();
                                 //alert("User " + rdata.username + " successfully created!");
                                 $("#txf_success").text(rdata.username + " successfully created!");
-                                $("#success_dialog").dialog({modal: true);
-//                                window.location="<?php echo Router::url(array('controller' => 'dilemmas', 'action' => 'index', 'login')); ?>";
+                                $("#success_dialog").dialog({modal: true, resizable: false});
                             }
                         },
                         error : function(jqXHR, textStatus, errorThrown) {
