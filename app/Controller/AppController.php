@@ -33,7 +33,7 @@ App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 class AppController extends Controller {
     public $components = array('DebugKit.Toolbar', 'Session', 'Auth'
         => array(
-            'loginAction' => array('controller' => 'dilemmas', 'action' => 'login'),
+            'loginAction' => array('controller' => 'dilemmas', 'action' => 'login', 'login'),
             'loginRedirect' =>
             array('controller' => 'lobby',
                 'action' => 'lobby'),
