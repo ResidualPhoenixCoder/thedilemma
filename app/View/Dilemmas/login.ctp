@@ -41,7 +41,7 @@ $(function() {
                                     window.location=rdata.redirect;
                                 } else {
                                     if(rdata.error) {
-                                        showErrorMsg(rdata.errorMsg + " " + rdata.username + " | " + rdata.password);
+                                        showErrorMsg(rdata.errorMsg);
                                     } else {
                                         showErrorMsg("Shit just hit the fan.");
                                     }
