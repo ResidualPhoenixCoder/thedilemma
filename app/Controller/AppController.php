@@ -54,6 +54,7 @@ class AppController extends Controller {
     
     public function index() {
             $this->layout = "dilemmas";
+            
             if($this->Auth->login()) {
                 $this->redirect($this->Auth->redirect());
             }

@@ -13,13 +13,22 @@
  */
 class LobbyController extends AppController{
     public function beforeFilter() {
-        //$this->Auth->allow('lobby');
+        
     }
     
     public function lobby() {
-        $this->layout = "dilemmas";
+        
+    }
+    
+    public function getPlayers() {
         if($this->Auth->login()) {
-            
+            $this->autoRender = false;
+            $this->loadModel('Player');
+            $data = $this->Player->find('all', array(
+                'order' => 'rand()',
+                'limit' => 10
+            ));
+            echo json_encode($data);
         }
     }
 }
