@@ -12,13 +12,16 @@
  * @author mlabrador
  */
 class QuestionsControl {
+    
     public function questions() {
         $this->loadModel("Question");
-        
+        $data = $this->request->input('json_decode', true);
         try {
             $this->questions->create();
+            $this->questions->save($data);
         } catch(Exception $e) {
             
         }
+        echo json_encode($data);
     }
 }

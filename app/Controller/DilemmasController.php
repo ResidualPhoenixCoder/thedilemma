@@ -1,41 +1,102 @@
-<?
+<?php
 App::uses('AppController', 'Controller');
 
 class DilemmasController extends AppController {
-
-	public function display() {
-		$path = func_get_args();
-
-		$count = count($path);
-		if (!$count) {
-			return $this->redirect('/');
-		}
-
-		$page = $subpage = $title_for_layout = null;
-
-		if (!empty($path[0])) {
-			$page = $path[0];
-		}
-
-		if (!empty($path[1])) {
-			$subpage = $path[1];
-		}
-
-		if (!empty($path[$count - 1])) {
-			$title_for_layout = "The Dilemma | A game to drive you mad...";//Inflector::humanize($path[$count - 1]);
-		}
-
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		$this->layout = "dilemmas";
-
-		try {
-			$this->render(implode('/', $path));
-		} catch (MissingViewException $e) {
-			if (Configure::read('debug')) {
-				throw $e;
-			}
-			throw new NotFoundException();
-		}
+        public function beforeFilter() {
+            parent::beforeFilter();
+            $this->Auth->authenticate = array('Form');
+            $this->Auth->allow('register', 'login');
+        }
+        
+        /*
+         * Registers the user in the database and validates to make sure
+         * the user does not exist either by username or by e-mail.
+         */
+	public function register() {
+            $this->loadModel('Player');
+            
+            /*
+             * Sample Model Access
+             */
+            
+            /*
+             * $this->Player->find('first');
+             * foreach($players as $player) {
+             *      echo $player['Player']['username'];
+             *      echo "<br/>";
+             * }
+             */
+            
+            $this->autoRender=false;
+            $data = $this->request->input('json_decode', true);
+            if(!empty($data) && !(empty($data['username']) || empty($data['password']) || empty($data['email']))) {
+                $playerByUsername = $this->Player->find('first', array('conditions' => array('Player.username' => $data['username'])));
+                $playerByEmail = $this->Player->find('first', array('conditions' => array('Player.email' => $data['email'])));
+                
+                //Check whether this player exists by username or e-mail.
+                if(!empty($playerByUsername) || !empty($playerByEmail)) {
+                    $error = "";
+                    $ctr = 0;
+                    if(!empty($playerByUsername)) {
+                        $error = "Player exists by username";
+                        $ctr++;
+                    }
+                    
+                    if(!empty($playerByEmail)) {
+                        if($ctr == 0) {
+                            $error = "Player exists by e-mail";
+                        } else {
+                            $error .= ", and e-mail";
+                        }
+                    }
+                    
+                    $data['error'] = true;
+                    $data['errorMsg'] = $error . ".";
+                    $data['exists'] = true;
+                } else {
+                    //Create the new user object to be inserted into the database.
+                    $newUser = array('username' => $data['username'], 'email' => $data['email'], 'password' => $data['password']);
+                    try{
+                        $this->Player->create();
+                        $this->Player->save($newUser); //Inserts this user into the database.
+                    } catch(Exception $e) {
+                        $data['error'] = true;
+                        $data['errorMsg'] = "User creation not possible.";
+                    }
+                }
+            /*
+             * The following checks whether any of the essential fields are empty.  If they are, 
+             * then the error message is constructed.
+             */ 
+            } else {
+                $data['error'] = true;
+                $data['errorMsg'] = "Data object retrieval failed.";
+            }
+            echo json_encode($data);
 	}
+        
+        public function login() {
+            $this->autoRender = false;
+            if($this->request->is('post')) {
+                $data = $this->request->input('json_decode', true);
+                $this->request->data['Player']['username'] = $data['username'];
+                $this->request->data['Player']['password'] = $data['password'];
+                $this->Auth->authenticate = array(AuthComponent::ALL => array('userModel' => 'Player'), 'Basic', 'Form');
+                if($this->Auth->login()) {
+                    $data['auth'] = true;
+                    $data['redirect'] = Router::url(array('controller' => 'lobby', 'action' => 'lobby'));
+                    $data['error'] = false;
+                } else {
+                    $data['error'] = true;
+                    $data['errorMsg'] = "Incorrect username or password.";
+                }
+                
+                echo json_encode($data);
+            }
+        }
+        
+        public function logout() {
+            return $this->redirect($this->Auth->logout());
+        }
 }
 ?>

@@ -3,7 +3,7 @@
 		$("#btn_begin")
 			.button()
 			.click(function( event ) {
-				window.location="/dilemmas/display/player_login";
+				window.location="<?php echo Router::url(array('controller' => 'dilemmas', 'action' => 'index', 'login')); ?>";
 			});
 	});
 </script>
