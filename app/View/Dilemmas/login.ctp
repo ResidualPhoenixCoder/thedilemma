@@ -19,8 +19,9 @@ function hideErrorMsg() {
     
 $(function() {
         hideErrorMsg();
-        $('#form_login')
-                .submit(function(event) {
+        $('#btn_login')
+                .button()
+                .click(function(event) {
                     if(validate()) {
                         var formDataObj = new Object();
                         formDataObj.error = false;
@@ -68,12 +69,17 @@ $(function() {
 	margin-top: -150px;
 }
 
+table {
+	border: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 #btn_login, #btn_register{
 	width: 180px;
 }
 </style>
 
-<div id="main">
 <h1>PLAYER LOGIN</h1>
 <?php echo $this->Form->create("dilemmas", array('id' => 'form_login')); ?>
 <table id="treg">
@@ -81,6 +87,5 @@ $(function() {
         <tr><td>Username:</td><td><?php echo $this->Form->input('Username', array('id' => 'txf_user', 'class' => 'registration_fields', 'label' => false)); ?></td></tr>
         <tr><td>Password:</td><td><?php echo $this->Form->input('Password', array('type' => 'password', 'id' => 'txf_pswrd','class' => 'registration_fields', 'label' => false)); ?></td></tr>
 </table><br />
-<div style="text-align:center;"><?php echo $this->Form->submit('LOGIN', array('id'=>'btn_login')); ?><button id="btn_register">REGISTER</button></div><br />
+<div style="text-align:center;"><button id="btn_login">LOGIN</button><button id="btn_register">REGISTER</button></div><br />
 <?php echo $this->Form->end(); ?>
-</div>

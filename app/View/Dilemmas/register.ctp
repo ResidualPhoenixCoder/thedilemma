@@ -74,8 +74,9 @@ function validate(dataObj) {
 $(function() {
     hideErrorMsg();
 
-    $('#form_registration')
-            .submit(function(event) {
+    $('#btn_register')
+            .button()
+            .click(function(event) {
                 var formDataObj = {};
                 formDataObj.error = false;
                 formDataObj.errorMsg = "";
@@ -145,7 +146,7 @@ table {
 		<tr><td>*Password:</td><td><?php echo $this->Form->input('Password', array('type' => 'password', 'id' => 'txf_pswrd','class' => 'registration_fields', 'label' => false)); ?></td></tr>
 		<tr><td>*Password (Confirm):</td><td><?php echo $this->Form->input('Password (Confirm)', array('type' => 'password', 'id' => 'txf_pswrd_cnfrm','class' => 'registration_fields', 'label' => false)); ?></td></tr>
 	</table><br />
-        <div style="text-align:center;"><?php echo $this->Form->submit('REGISTER', array('id'=>'btn_register')); ?></div><br />
+        <div style="text-align:center;"><button id="btn_register">REGISTER</button></div><br />
         <?php echo $this->Form->end(); ?>
 </div>
 

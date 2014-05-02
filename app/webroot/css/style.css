@@ -25,6 +25,11 @@ body {
 	border-radius: 20px;
 }
 
+#footer {
+    width: 100%;
+    text-align:center;
+}
+
 #menu {
 	display: block;
 	margin-left: auto;
