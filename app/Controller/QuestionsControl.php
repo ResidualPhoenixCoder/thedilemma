@@ -13,7 +13,7 @@
  */
 class QuestionsControl {
     
-    public function questions() {
+    public function question_round() {
         $this->loadModel("Question");
         $data = $this->request->input('json_decode', true);
         try {

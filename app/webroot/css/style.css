@@ -7,7 +7,7 @@ h1 {
 }
 
 body {
-	background-color: #F5F3EE;
+	background-color: #212121;
 	color: #FFFFFF;
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
@@ -22,6 +22,7 @@ body {
 	border-color: #4A96AD;
 	background-color: #7D1935;
 	box-shadow: 8px 8px 15px #949494;
+	border-radius: 20px;
 }
 
 #menu {
