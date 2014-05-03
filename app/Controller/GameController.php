@@ -15,12 +15,15 @@ class GameController extends AppController{
     
     public function rounds() {
         $this->layout = 'round_lay';
-        //$this->loadModel("Question");
-        //$data = $this->request->input('json_decode', true);
-        //print_r($this->request->data);
+        $this->loadModel("Round");
+        $this->loadModel("RoundAnswer");
+        $opid = $this->request->data['player2_pid'];
         $this->set('opponent', $this->request->data['player2']);
+        
+        
+        //$this->Round->find('all', array('conditions' => ));
 //        try {
-//            $this->Question->create();
+//            $this->Round->create();
 //            $this->Question->save($data);
 //        } catch(Exception $e) {
 //            

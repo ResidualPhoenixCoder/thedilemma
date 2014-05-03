@@ -13,9 +13,6 @@
     <body>
         <div id="wrapper">
             <?php echo $this->fetch("content"); ?>
-            <div id="footer">
-
-            </div>
         </div>
     </body>
 </html>

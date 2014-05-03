@@ -1,17 +1,17 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Round Model
+ * RoundAnswer Model
  *
  */
-class Round extends AppModel {
+class RoundAnswer extends AppModel {
 
 /**
  * Use table
  *
  * @var mixed False or table name
  */
-	public $useTable = 'Rounds';
+	public $useTable = 'RoundAnswers';
 
 /**
  * Primary key field

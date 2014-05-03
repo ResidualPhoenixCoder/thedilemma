@@ -15,7 +15,6 @@
                     event.preventDefault();
                     window.location="<?php echo Router::url(array('controller' => 'dilemmas', 'action' => 'logout')); ?>";
                 });
-        ;
 
         // Load question data
         load_question();
@@ -143,9 +142,9 @@
                 <td>LIE</td>
             </tr>
             <tr>
-                <td>33%</td>
-                <td>33%</td>
-                <td>33%</td>
+                <td id="hideStat">33%</td>
+                <td id="shareStat">33%</td>
+                <td id="lieStat">33%</td>
             </tr>
         </table>
     </div><br />

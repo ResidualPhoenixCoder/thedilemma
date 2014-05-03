@@ -8,6 +8,21 @@
         echo $this->Html->script('jquery-ui-1.10.4.js');
         echo $this->Html->css('style');
         ?>
+        <script>
+            $(function() {
+                $('#genLogout')
+                        .button()
+                        .click(function(event) {
+                            window.location = "<?php echo Router::url(array('controller' => 'dilemmas', 'action' => 'logout')); ?>";
+                        });
+            });
+        </script>
+
+        <style>
+            #genLogout {
+                margin: 10px
+            }
+        </style>
     </head>
 
     <body>
@@ -16,7 +31,8 @@
             <div id="footer">
                 <?php
                 if ($this->Session->read('Auth')) {
-                    echo $this->Html->link('Logout', array('controller' => 'dilemmas', 'action' => 'logout'));
+                    //echo $this->Html->link('Logout', array('controller' => 'dilemmas', 'action' => 'logout'), array('id' => 'genLogout'));
+                    echo "<button id='genLogout'>Logout</button>";
                 }
                 ?>
             </div>
