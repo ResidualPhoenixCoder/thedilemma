@@ -97,11 +97,13 @@
             $('.user-item').remove();
         }
 
-        var bot = 0;
+
         $.each(data, function(index, value) {
             var playerData = value['Player'];
             if (playerData.clan_tag === 'bot') {
-                add_user(playerData.pid, 'Bot ' + ++bot, playerData.clan_tag, playerData.lie, playerData.share, playerData.hide, playerData.correct);
+                var bot1 = (1 + Math.floor(Math.random() * 100)) * 100;
+                var bot2 = 1 + Math.floor(Math.random() * 100);
+                add_user(playerData.pid, 'Bot ' + (bot1 + bot2), playerData.clan_tag, playerData.lie, playerData.share, playerData.hide, playerData.correct);
             } else {
                 add_user(playerData.pid, playerData.username, playerData.clan_tag, playerData.lie, playerData.share, playerData.hide, playerData.correct);
             }
