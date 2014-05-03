@@ -8,7 +8,7 @@
 
     /*TIMER*/
     var max_time = 10;
-    var gameSpeed = 500;
+    var gameSpeed = 700;
     var cinterval;
 
     function countdown_timer() {
@@ -37,7 +37,7 @@
         formObj.opponent_lie_answer = currq.player_lie_answer;
         
         var formData = JSON.stringify(formObj);
-//        alert(formData);
+
         $.ajax({
             type: 'POST',
             url: "<?php echo Router::url(array('controller' => 'game', 'action' => 'roundComplete')); ?>",
@@ -46,6 +46,11 @@
                 alert("Server is unavailable. Error: " + jqXHR.responseText);
             }
         });
+    }
+    
+    function change_background() {
+        var imageUrl = "<?php echo $this->request->webroot; ?>" + 'img/' + String(Math.floor(Math.random() * 10) + 1) + '.png';
+        $('body').css('background-image', 'url(' + imageUrl + ')');
     }
 
     //Load the next question or head on out.
@@ -56,11 +61,11 @@
             max_time = 11;
             save_answers();
             currq = questions[qctr++]['RoundAnswer'];
+            change_background();
             load_question(currq.question, currq.answer_a, currq.answer_b, currq.answer_c, currq.answer_d);
             cinterval = setInterval("countdown_timer()", gameSpeed);
         } else {
-//            alert("Done!");
-            window.location =<?php // echo Router::url(array('controller' => 'lobby', 'action' => 'lobby'));    ?>;
+            window.location = "<?php echo Router::url(array('controller' => 'lobby', 'action' => 'lobby'));?>";
         }
     }
 
@@ -94,6 +99,7 @@
 
         // Load question data
         currq = questions[qctr++]['RoundAnswer'];
+        change_background();
         load_question(currq.question, currq.answer_a, currq.answer_b, currq.answer_c, currq.answer_d);
 
         // 1,000 means 1 second.
