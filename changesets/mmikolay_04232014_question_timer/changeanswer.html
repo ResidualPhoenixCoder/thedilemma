@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>The Dilemma | Change Answer</title>
+	<link href="css/ui-lightness/jquery-ui-1.10.4.css" rel="stylesheet">
+	<script src="js/jquery-1.10.2.js"></script>
+	<script src="js/jquery-ui-1.10.4.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script>
+	$(function() {
+		$( "#radio" ).buttonset();
+		load_question();
+		$("#opAnswer").html( $("#ansA").html());
+		$("#myAnswer").html( $("#ansC").html());
+	});
+	
+	function load_question() {
+		$("#qText").html("Which of the following books did you find most boring?");
+		$("#ansA").html("The Social Life of Information");
+		$("#ansB").html("In The Age Of The Smart Machine");
+		$("#ansC").html("The Origin of Virtue");
+		$("#ansD").html("All of the above");
+	}
+	</script>
+	<style>
+	#main {
+		width: 400px;
+		margin-top: -200px;
+		margin-left: -200px;
+	}
+	
+	table {
+		border: 0px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	#radio {
+		text-align: center;
+	}
+	</style>
+	
+</head>
+
+<body>
+
+<div id="main">
+	<h1>CHANGE ANSWER</h1>
+	<p style="text-align:center; font-weight:bold;">
+	
+	<span id="qText">QUESTION TEXT</span><br /><br />
+
+	Your opponent answered:
+	<i><span id="opAnswer">OPPONENT ANSWER</span></i><br /><br />
+	
+	You answered:
+	<i><span id="myAnswer">MY ANSWER</span></i><br /><br />
+	
+	Would you like to change your answer?</p>
+	
+	<div>
+		<table>
+			<tr><td>A:</td><td><span id="ansA">ANSWER A</span></td></tr>
+			<tr><td>B:</td><td><span id="ansB">ANSWER B</span></td><tr>
+			<tr><td>C:</td><td><span id="ansC">ANSWER C</span></td></tr>
+			<tr><td>D:</td><td><span id="ansD">ANSWER D</span></td></tr>
+		</table><br />
+	</div>
+	<div id="radio">
+		<input type="radio" id="radioA" name="radio"><label for="radioA">A</label>
+		<input type="radio" id="radioB" name="radio"><label for="radioB">B</label>
+		<input type="radio" id="radioC" name="radio"><label for="radioC">C</label>
+		<input type="radio" id="radioD" name="radio"><label for="radioD">D</label>
+	</div><br />
+</div>
+
+</body>
+
+</html>

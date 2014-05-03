@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>The Dilemma | Login</title>
+	<link href="css/ui-lightness/jquery-ui-1.10.4.css" rel="stylesheet">
+	<script src="js/jquery-1.10.2.js"></script>
+	<script src="js/jquery-ui-1.10.4.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script>
+	$(function() {
+		$( "#btn_login" )
+			.button()
+			.click(function( event ) {
+				window.location='login.html';
+			});
+		$( "#btn_register" )
+			.button()
+			.click(function( event ) {
+				window.location='register.html';
+			});
+	});
+	</script>
+	<style>
+	#main {
+		margin-top: -150px;
+	}
+	
+	#btn_login, #btn_register{
+		width: 180px;
+	}
+	</style>
+	
+</head>
+
+<body>
+
+<div id="main">
+	<h1>PLAYER LOGIN</h1>
+	<div style="margin:10px; text-align:center;"><label>Username: </label><input type="text" id="txf_user" /></div>
+	<div style="margin:10px; text-align:center;"><label>Password: </label><input type="password" id="txf_pswrd" /></div>
+	<div style="text-align:center;"><button id="btn_login">LOGIN</button><button id="btn_register">REGISTER</button></div><br />
+</div>
+
+</body>
+
+</html>

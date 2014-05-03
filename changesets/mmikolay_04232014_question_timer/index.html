@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>The Dilemma | A game to drive you mad...</title>
+	<link href="css/ui-lightness/jquery-ui-1.10.4.css" rel="stylesheet">
+	<script src="js/jquery-1.10.2.js"></script>
+	<script src="js/jquery-ui-1.10.4.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script>
+	$(function() {
+		$( "#btn_begin" )
+			.button()
+			.click(function( event ) {
+				window.location='login.html';
+			});
+	});
+	</script>
+	<style>
+	#main {
+		margin-top: -200px;
+	}
+	
+	#btn_begin {
+		width: 360px;
+	}
+	</style>
+  
+</head>
+
+<body>
+
+<div id="main">
+	<h1>THE DILEMMA</h1>
+	<p class="block">The Dilemma is a trivia game played between two players at a time. A question is presented to both players at which point each player has ten seconds to choose one of multiple choices as their answer. In addition to choosing an answer each player chooses whether they would like to hide, share, or lie about their answer to the other player. If a player chooses to share or lie about their answer then the other player will be given a chance to decide whether they want to stick with their original answer or switch to the answer given to them by the other player. To help each player decide what to do with their answers they are given the strengths, weaknesses, and overall reputation of the other player.</p>
+	<div style="text-align:center;"><button id="btn_begin">BEGIN</button></div><br />
+</div>
+
+</body>
+
+</html>

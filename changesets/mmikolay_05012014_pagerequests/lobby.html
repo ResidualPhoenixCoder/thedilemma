@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>The Dilemma | Lobby</title>
+	<link href="css/ui-lightness/jquery-ui-1.10.4.css" rel="stylesheet">
+	<script src="js/jquery-1.10.2.js"></script>
+	<script src="js/jquery-ui-1.10.4.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script>
+	$(function() {
+		$( "#lobby_menu" ).menu( { select: user_select });
+		$( "#btn_play" )
+			.button()
+			.click(function( event ) {
+				window.location='question.html';
+			});
+		add_user("zuboff", "Clan1", "25%", "25%", "25%", "25%");
+		add_user("brown", "Clan2", "25%", "65%", "25%", "95%");
+		add_user("deguid", "Clan3", "15%", "25%", "15%", "25%");
+		add_user("ridley", "Clan4", "25%", "65%", "25%", "15%");
+	});
+	
+	function add_user(name, clantag, plie, pshare, phide, pwin) {
+		var id = "ut_" + name;
+		var text = "<li id = '" + id + "'><a href='#'>" + name + " | " + clantag + " | " + plie + " | " + pshare + " | " + phide + " | " + pwin + "</a></li>";
+		$( "#lobby_menu" ).append(text);
+		$( "#lobby_menu" ).menu( "refresh" );
+	}
+	
+	function user_select(event, ui) {
+		alert(ui.item.attr('id'));
+	}
+	</script>
+	<style>
+	#main {
+		width: 550px;
+		margin-top: -300px;
+		margin-left: -275px;
+	}
+	
+	#btn_play {
+		width: 500px;
+	}
+	
+	#lobby_menu { width: 475px; }
+	</style>
+  
+</head>
+
+<body>
+
+<div id="main">
+	<h1>LOBBY</h1>
+	<div style="width: 500px; height: 250px; overflow-y: scroll; margin-left:auto; margin-right:auto;">
+		<ul id="lobby_menu">
+		</ul>
+	</div>
+	<div style="text-align:center;"><button id="btn_play">PLAY</button></div><br />
+</div>
+
+</body>
+
+</html>

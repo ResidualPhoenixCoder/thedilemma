@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>The Dilemma | Confirmation</title>
+	<link href="css/ui-lightness/jquery-ui-1.10.4.css" rel="stylesheet">
+	<script src="js/jquery-1.10.2.js"></script>
+	<script src="js/jquery-ui-1.10.4.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script>
+	function load_name(username) {
+		$("#user_span").html(username);
+	}
+	
+	$(function() {
+		load_name("Bill Gates");
+		$( "#btn_login" )
+			.button()
+			.click(function( event ) {
+				window.location='login.html';
+			});
+	});
+	</script>
+	<style>
+	#main {
+		margin-top: -200px;
+	}
+	
+	#btn_login {
+		width: 360px;
+	}
+	</style>
+  
+</head>
+
+<body>
+
+<div id="main">
+	<h1>REGISTRATION CONFIRMATION</h1>
+	<p style="text-align:center;">Registration successful! User <span id="user_span">USERNAME</span> registered.<br />Click below to login.</p>
+	<div style="text-align:center;"><button id="btn_login">LOGIN</button></div><br />
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>The Dilemma | Admin</title>
+	<link href="css/ui-lightness/jquery-ui-1.10.4.css" rel="stylesheet">
+	<script src="js/jquery-1.10.2.js"></script>
+	<script src="js/jquery-ui-1.10.4.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script>
+	$(function() {
+		$( "#btn_done" )
+			.button()
+			.click(function( event ) {
+				
+			});
+	});
+	</script>
+	<style>
+	#main {
+		width: 500px;
+		margin-top: -250px;
+		margin-left: -250px;
+	}
+	
+	table {
+		border: 0px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	#btn_done {
+		width: 360px;
+	}
+	
+	#txf_a, #txf_b, #txf_c, #txf_d, #txf_question {
+		width: 250px;
+		height: 25px;
+	}
+	
+	</style>
+  
+</head>
+
+<body>
+
+<div id="main">
+	<h1>ADMIN</h1>
+	<div>
+		<table id="#treg">
+			<tr><td>Question:</td><td><input type="text" id="txf_question" /></td></tr>
+			<tr><td><input type="radio" name="rd_ans" value="ans_a"> A:</td><td><input type="text" id="txf_a" /></td></tr>
+			<tr><td><input type="radio" name="rd_ans" value="ans_b"> B:</td><td><input type="text" id="txf_b" /></td></tr>
+			<tr><td><input type="radio" name="rd_ans" value="ans_c"> C:</td><td><input type="password" id="txf_c" /></td></tr>
+			<tr><td><input type="radio" name="rd_ans" value="ans_d"> D:</td><td><input type="password" id="txf_d" /></td></tr>
+		</table><br />
+	</div>
+	<div style="text-align:center;"><button id="btn_done">DONE</button></div><br />
+</div>
+
+</body>
+
+</html>

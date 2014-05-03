@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>The Dilemma | Error</title>
+	<link href="css/ui-lightness/jquery-ui-1.10.4.css" rel="stylesheet">
+	<script src="js/jquery-1.10.2.js"></script>
+	<script src="js/jquery-ui-1.10.4.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script>
+	$(function() {
+		$( "#btn_back" )
+			.button()
+			.click(function( event ) {
+				window.history.go(-1);
+			});
+	});
+	</script>
+	<style>
+	#main {
+		margin-top: -200px;
+	}
+	
+	#btn_back {
+		width: 360px;
+	}
+	</style>
+  
+</head>
+
+<body>
+
+<div id="main">
+	<h1>ERROR</h1>
+	<p style="text-align:center;">You are not authenticated for this page.</p>
+	<div style="text-align:center;"><button id="btn_back">BACK</button></div><br />
+</div>
+
+</body>
+
+</html>

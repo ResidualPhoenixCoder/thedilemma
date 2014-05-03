@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>The Dilemma | Hide, Share, Lie</title>
+	<link href="css/ui-lightness/jquery-ui-1.10.4.css" rel="stylesheet">
+	<script src="js/jquery-1.10.2.js"></script>
+	<script src="js/jquery-ui-1.10.4.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script>
+	$(function() {
+		$( "#btn_hide" )
+			.button()
+			.click(function( event ) {
+			
+			});
+		$( "#btn_share" )
+			.button()
+			.click(function( event ) {
+			
+			});
+		$( "#btn_lie" )
+			.button()
+			.click(function( event ) {
+			
+			});
+			
+		$("#qText").html("Which of the following books did you find most boring?");
+		$("#myAnswer").html("The Social Life of Information");
+	});
+	</script>
+	<style>
+	#main {
+		width: 400px;
+		margin-top: -200px;
+		margin-left: -200px;
+	}
+	
+	#radio {
+		text-align: center;
+	}
+	
+	#btn_hide, #btn_share, #btn_lie {
+		width: 180px;
+	}
+	</style>
+	
+</head>
+
+<body>
+
+<div id="main">
+	<h1>HIDE/SHARE/LIE</h1>
+	<p style="text-align:center; font-weight:bold;">
+	<span id="qText">QUESTION TEXT</span><br /><br />
+	Your answer was "<span id="myAnswer"></span>".<br />What would you like to do?</p>
+	<div style="text-align:center;"><button id="btn_hide">HIDE</button></div>
+	<div style="text-align:center;"><button id="btn_share">SHARE</button></div>
+	<div style="text-align:center;"><button id="btn_lie">LIE</button></div>
+	<br />
+	
+	
+</div>
+
+</body>
+
+</html>

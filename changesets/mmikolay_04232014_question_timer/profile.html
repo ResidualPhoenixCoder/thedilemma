@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>The Dilemma | Profile</title>
+	<link href="css/ui-lightness/jquery-ui-1.10.4.css" rel="stylesheet">
+	<script src="js/jquery-1.10.2.js"></script>
+	<script src="js/jquery-ui-1.10.4.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script>
+	$(function() {
+
+		$( "#btn_close" )
+			.button()
+			.click(function( event ) {
+			
+			});
+	
+	});
+	</script>
+	<style>
+	#main {
+		width: 400px;
+		margin-top: -200px;
+		margin-left: -200px;
+	}
+	
+	table {
+		border: 0px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	#btn_close {
+		width: 360px;
+	}
+	</style>
+	
+</head>
+
+<body>
+
+<div id="main">
+	<h1>PROFILE</h1>
+	<div>
+		<table>
+			<tr><td>Username:</td><td><span id="username">ZUBOFF</span></td></tr>
+			<tr><td>Lied:</td><td><span id="lied">33%</span></td><tr>
+			<tr><td>Shared:</td><td><span id="shared">33%</span></td></tr>
+			<tr><td>Hidden:</td><td><span id="hidden">33%</span></td></tr>
+			<tr><td>Correct:</td><td><span id="correct">33%</span></td></tr>
+			<tr><td>Incorrect:</td><td><span id="incorrect">33%</span></td></tr>
+		</table><br />
+		<div style="text-align:center;"><button id="btn_close">CLOSE</button></div>
+	</div>
+	<br />
+	
+	
+</div>
+
+</body>
+
+</html>
