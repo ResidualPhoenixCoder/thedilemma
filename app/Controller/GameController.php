@@ -15,18 +15,38 @@ class GameController extends AppController{
     
     public function rounds() {
         $this->layout = 'round_lay';
-        $this->loadModel("Round");
+        $this->loadModel("Player");
+        $this->loadModel("Question");
         $this->loadModel("RoundAnswer");
+
         $opid = $this->request->data['player2_pid'];
-        $this->set('opponent', $this->request->data['player2']);
         
+        $current = $this->Auth->user('pid');
+        $opponent = $this->Player->find('first', array(
+           'conditions' => array('Player.pid' => $opid) 
+        ));
         
-        //$this->Round->find('all', array('conditions' => ));
-//        try {
-//            $this->Round->create();
-//            $this->Question->save($data);
-//        } catch(Exception $e) {
-//            
-//        }
+        /*
+         * Retrieve the player's past games.  Select one of the past games, and use the same behaviors to pit against the user.
+         */
+        $p2hist = $this->RoundAnswer->find('first', array(
+            'conditions' => array('RoundAnswer.player' => $opid),
+            'order' => 'rand()'
+            ));
+        
+        $questions = $this->RoundAnswer->find('all', array(
+            'conditions' => array('RoundAnswer.question_group' => $p2hist['RoundAnswer']['question_group'], 'RoundAnswer.player' => $opid),
+            'order' => 'question_order ASC'
+        ));
+        
+        $this->set('questions', json_encode($questions));
+        $this->set('question_group', uniqid());
+        $this->set('current', $current);
+        $this->set('opponent', json_encode($opponent['Player']));
+    }
+    
+    public function roundComplete() {
+            $this->autoRender = false;
+//        $data = $this->request->input('json_decode', true);
     }
 }

@@ -138,7 +138,7 @@ class BotController extends AppController {
         //ADMINISTRATION
         $rnd['player'] = $p1['pid'];
         $rnd['opponent'] = $p2['pid'];
-        //$round['date'] = date();
+        //$rnd['date'] = date();
         $rnd['question_id'] = $q['qid'];
         $rnd['question_group'] = $rqg;
         $rnd['question_order'] = $order;

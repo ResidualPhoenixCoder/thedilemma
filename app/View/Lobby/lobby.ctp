@@ -117,7 +117,7 @@
         var percsha = ((parseInt(pshare) / total) * 100).toFixed(0);
         var perchid = ((parseInt(phide) / total) * 100).toFixed(0);
         //var perwins = Math.floor((pwin / total) * 100);
-        var text = "<li class='ui-widget-content user-item' pid='" + pid + "' id = '" + id + "'><a href='test'>" + (username >= 5 ? username.substring(0, 5) + "..." : username) + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LIES: </b>" + perclie + "%,&nbsp;&nbsp; <b>SHARES: </b>" + percsha + "%,&nbsp;&nbsp; <b>HIDES: </b>" + perchid + "%</a></li>";
+        var text = "<li class='ui-widget-content user-item' pid='" + pid + "' id = '" + id + "'><a href='test'>" + (username >= 10 ? username.substring(0, 10) + "..." : username) + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LIES: </b>" + perclie + "%,&nbsp;&nbsp; <b>SHARES: </b>" + percsha + "%,&nbsp;&nbsp; <b>HIDES: </b>" + perchid + "%</a></li>";
         $("#lobby_select").append(text);
         $("#lobby_select").selectable("refresh");
     }
