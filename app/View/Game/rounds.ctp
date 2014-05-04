@@ -150,7 +150,7 @@
             $("#loser").val(opponent.pid);
             $("#winfinal").val(playerPoints);
             $("#losefinal").val(opponentPoints);
-            
+
             if (playerPoints === opponentPoints) {
                 $("#draw").val(true);
                 $("#winfinal").val(playerPoints);
@@ -162,7 +162,7 @@
                 $("#losefinal").val(playerPoints);
             }
             $("#form_game_complete").submit();
-            //window.location = "<?php //echo Router::url(array('controller' => 'lobby', 'action' => 'lobby'));                 ?>";
+            //window.location = "<?php //echo Router::url(array('controller' => 'lobby', 'action' => 'lobby'));                   ?>";
         }
     }
 
@@ -396,10 +396,14 @@
         font-size: 80%;
     }
 
+    #music {
+        display: none;
+    }
+
     h2 {
         margin: 0;
     }
-    
+
     h3 {
         margin: 0;
     }
@@ -456,7 +460,7 @@
             <input type="radio" name="rgActionSet" id="rdoLie" value="L"><label for="rdoLie">LIE</label>
         </div>
     </div><br />
-        <div id="stats" class="main-arena">
+    <div id="stats" class="main-arena">
         <table>
             <tr><td colspan="3"><h3><span id="playerName_profile" class="playerName">Fellow Prisoner</span>'s Profile</h3><hr></td></tr>
             <tr>
@@ -472,6 +476,11 @@
             </tr>
         </table>
     </div><br />
+    <div id="music">
+        <audio autoplay="autoplay" type="hidden" controls>
+            <source src="<?php echo $music; ?>">
+        </audio>
+    </div>
     <?php
 //    if ($this->Session->read('Auth')) {
 //        echo "<div style='text-align:center;'><button id='btnLogout'>LOGOUT, YOU WUSS!</button></div><br />";

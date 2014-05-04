@@ -43,6 +43,7 @@ class GameController extends AppController {
         $this->set('question_group', uniqid());
         $this->set('current', $current);
         $this->set('opponent', json_encode($opponent['Player']));
+        $this->set('music', $this->webroot . 'media/' . rand(1, 5) .'.mp3');
     }
 
     public function roundComplete() {

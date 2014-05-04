@@ -145,12 +145,18 @@
     }
 
     #btn_play {
+        margin-top: 20px;
         width: 500px;
+        height: 50px
     }
 
     #second_menu{
         width:500px;
         margin: auto auto;
+    }
+    
+    #second_menu button {
+        width: 100%;
     }
 
     #lobby_select { width: 475px; }
@@ -183,7 +189,7 @@
     </ul>
 </div>
 <div style="text-align:center;"><button id="btn_play">PLAY</button></div><br />
-<div id="second_menu" style="text-align:left;"><button id="bot">Run a Bot Simulation</button><button id="player">Get Players</button></div><br />
+<div id="second_menu" style="text-align:left;"><button id="bot">Run a Bot Simulation</button><br><button id="player">Get Random Set of Players</button></div><br />
 <form id="form_round_start" method="post" action="<?php echo Router::url(array('controller' => 'game', 'action' => 'rounds')); ?>">
     <input id="player2" name="player2" type="hidden"/>
     <input id="player2_pid" name="player2_pid" type="hidden"/>
