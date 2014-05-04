@@ -38,7 +38,7 @@ class LobbyController extends AppController{
                    'order' => 'rand()',
                    'limit' => $numPlayer - sizeof($data)
                 ));
-                $data = array_merge($addBotData, $data);
+                $data = array_merge($data, $addBotData);
             } else if(sizeof($data) <= 0) {
                 //Retrieve players from the bots list.
                 $data = $this->Player->find('all', array(

@@ -1,3 +1,4 @@
+<?php echo $this->Html->script('keypress.js'); ?>
 <script>
     var questions = <?php echo $questions; ?>;
     var opponent = <?php echo $opponent; ?>;
@@ -17,6 +18,9 @@
     var max_time = 10;
     var gameSpeed = 700;
     var cinterval;
+
+    /*KEYBOARD SHIT*/
+    var kbl = new window.keypress.Listener();
 
     $(function() {
         var oppDispName = (opponent.username.length >= 10) ? opponent.username.substring(0, 10) + "..." : opponent.username;
@@ -60,6 +64,46 @@
 
         // 1,000 means 1 second.
         cinterval = setInterval('countdown_timer()', gameSpeed);
+
+        /*KEYBOARD BINDINGS*/
+        /*Answers*/
+        kbl.simple_combo('1', function() {
+            $("#rdoAnsA").prop('checked', true);
+            $("#rdoAnsA").button("refresh");
+            playerAnswer = "a";
+        });
+        kbl.simple_combo('2', function() {
+            $("#rdoAnsB").prop('checked', true);
+            $("#rdoAnsB").button("refresh");
+                        playerAnswer = "b";
+        });
+        kbl.simple_combo('3', function() {
+            $("#rdoAnsC").prop('checked', true);
+            $("#rdoAnsC").button("refresh");
+                        playerAnswer = "c";
+        });
+        kbl.simple_combo('4', function() {
+            $("#rdoAnsD").prop('checked', true);
+            $("#rdoAnsD").button("refresh");
+                        playerAnswer = "d";
+        });
+
+        /*Actions*/
+        kbl.simple_combo('left', function() {
+            $("#rdoHide").prop('checked', true);
+            $("#rdoHide").button("refresh");
+            playerAction = "H";
+        });
+        kbl.simple_combo('down', function() {
+            $("#rdoShare").prop('checked', true);
+            $("#rdoShare").button("refresh");
+            playerAction = "S";
+        });
+        kbl.simple_combo('right', function() {
+            $("#rdoLie").prop('checked', true);
+            $("#rdoLie").button("refresh");
+            playerAction = "L";
+        });
     });
 
     function load_question(q) {
@@ -127,8 +171,8 @@
 
             /*DETERMINE POINTS EARNED THIS ROUND*/
             points_accounting();
-//            alert("Player: " + playerPoints + " Opponent: " + opponentPoints);
             update_score();
+//            alert("PlayerAns: " + playerAnswer + ", PlayerAct: " + playerAction);
 
             /*SET FORM TO DEFAULT*/
             playerAnswer = "a";
@@ -162,7 +206,6 @@
                 $("#losefinal").val(playerPoints);
             }
             $("#form_game_complete").submit();
-            //window.location = "<?php //echo Router::url(array('controller' => 'lobby', 'action' => 'lobby'));                   ?>";
         }
     }
 
@@ -284,7 +327,7 @@
         margin-right: auto;
         text-align: left;
         border-style: none;
-        height: 100%;
+        height: 103%;
     }
 
     html, body {
@@ -481,11 +524,6 @@
             <source src="<?php echo $music; ?>">
         </audio>
     </div>
-    <?php
-//    if ($this->Session->read('Auth')) {
-//        echo "<div style='text-align:center;'><button id='btnLogout'>LOGOUT, YOU WUSS!</button></div><br />";
-//    }
-    ?>
 </div>
 <form id="form_game_complete" method="post" action="<?php echo Router::url(array('controller' => 'game', 'action' => 'game_complete')); ?>">
     <input id="draw" name ="draw" type="hidden" value ="false" />
