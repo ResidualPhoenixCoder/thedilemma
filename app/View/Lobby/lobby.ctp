@@ -97,12 +97,9 @@
             $('.user-item').remove();
         }
 
-
         $.each(data, function(index, value) {
             var playerData = value['Player'];
             if (playerData.clan_tag === 'bot') {
-//                var bot1 = (1 + Math.floor(Math.random() * 100)) * 100;
-//                var bot2 = 1 + Math.floor(Math.random() * 100);
                 add_user(playerData.pid, 'Bot Player', playerData.clan_tag, playerData.lie, playerData.share, playerData.hide, playerData.correct);
             } else {
                 add_user(playerData.pid, playerData.username, playerData.clan_tag, playerData.lie, playerData.share, playerData.hide, playerData.correct);
@@ -116,8 +113,9 @@
         var perclie = ((parseInt(plie) / total) * 100).toFixed(0);
         var percsha = ((parseInt(pshare) / total) * 100).toFixed(0);
         var perchid = ((parseInt(phide) / total) * 100).toFixed(0);
-        //var perwins = Math.floor((pwin / total) * 100);
-        var text = "<li class='ui-widget-content user-item' pid='" + pid + "' id = '" + id + "'><a href='test'>" + (username >= 10 ? username.substring(0, 10) + "..." : username) + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LIES: </b>" + perclie + "%,&nbsp;&nbsp; <b>SHARES: </b>" + percsha + "%,&nbsp;&nbsp; <b>HIDES: </b>" + perchid + "%</a></li>";
+        var percwin = ((parseInt(pwin) /total) * 100).toFixed(0);
+
+        var text = "<li class='ui-widget-content user-item' pid='" + pid + "' id = '" + id + "'><a href='test'>" + (username >= 10 ? username.substring(0, 10) + "..." : username) + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>L: </b>" + (isNaN(perclie) ? ' -- ' : perclie) + "%,&nbsp;&nbsp; <b>S: </b>" + (isNaN(percsha) ? ' --  ' : percsha) + "%,&nbsp;&nbsp; <b>H: </b>" + (isNaN(perchid) ? ' -- ' : perchid) + "%,&nbsp;&nbsp; <b>W: </b>" + (isNaN(percwin) ? ' -- ' : percwin) +"%</a></li>";
         $("#lobby_select").append(text);
         $("#lobby_select").selectable("refresh");
     }
@@ -185,7 +183,7 @@
     </ul>
 </div>
 <div style="text-align:center;"><button id="btn_play">PLAY</button></div><br />
-<div id="second_menu" style="text-align:left;"><button id="bot">Create Bots</button><button id="player">Get Players</button></div><br />
+<div id="second_menu" style="text-align:left;"><button id="bot">Run a Bot Simulation</button><button id="player">Get Players</button></div><br />
 <form id="form_round_start" method="post" action="<?php echo Router::url(array('controller' => 'game', 'action' => 'rounds')); ?>">
     <input id="player2" name="player2" type="hidden"/>
     <input id="player2_pid" name="player2_pid" type="hidden"/>

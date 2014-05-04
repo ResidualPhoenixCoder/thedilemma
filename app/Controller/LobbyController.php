@@ -26,7 +26,7 @@ class LobbyController extends AppController{
             $this->autoRender = false;
             $this->loadModel('Player');
             $data = $this->Player->find('all', array(
-                'conditions' => array('Player.games >' => 0),
+                'conditions' => array('Player.games >' => 0, 'Player.role' => 'real', 'Player.pid <>' => $this->Auth->user('pid')),
                 'order' => 'rand()',
                 'limit' => $numPlayer
             ));
@@ -42,7 +42,7 @@ class LobbyController extends AppController{
             } else if(sizeof($data) <= 0) {
                 //Retrieve players from the bots list.
                 $data = $this->Player->find('all', array(
-                   'conditions' => array('Player.role' => 'bot'),
+                   'conditions' => array('Player.role' => 'bot', 'Player.games >' => 0),
                    'order' => 'rand()',
                    'limit' => $numPlayer
                 ));
