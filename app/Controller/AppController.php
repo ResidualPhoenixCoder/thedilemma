@@ -21,6 +21,7 @@
  */
 App::uses('Controller', 'Controller');
 App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
+
 /**
  * Application Controller
  *
@@ -31,6 +32,7 @@ App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
     public $components = array('DebugKit.Toolbar', 'Session', 'Auth'
         => array(
             'loginAction' => array('controller' => 'dilemmas', 'action' => 'login', 'login'),
@@ -46,45 +48,46 @@ class AppController extends Controller {
             'autoRedirect' => false
         )
     );
-    
+
     public function beforeFilter() {
         $this->Auth->allow('index');
         $this->Auth->autoRedirect = false;
     }
-    
+
     public function index() {
-            $this->layout = "dilemmas";
-            
-            if($this->Auth->login()) {
-                $this->redirect($this->Auth->redirect());
+        $this->layout = "dilemmas";
+
+        if ($this->Auth->login()) {
+            $this->redirect($this->Auth->redirect());
+        }
+
+        $path = func_get_args();
+
+        $count = count($path);
+        if (!$count) {
+            return $this->redirect('/');
+        }
+
+        $page = $subpage = $title_for_layout = null;
+
+        if (!empty($path[0])) {
+            $page = $path[0];
+        }
+
+        if (!empty($path[$count - 1])) {
+            $title_for_layout = "The Dilemma | A game to drive you mad..."; //Inflector::humanize($path[$count - 1]);
+        }
+
+        $this->set(compact('page', 'title_for_layout'));
+
+        try {
+            $this->render(implode('/', $path));
+        } catch (MissingViewException $e) {
+            if (Configure::read('debug')) {
+                throw $e;
             }
-            
-            $path = func_get_args();
-
-            $count = count($path);
-            if (!$count) {
-                    return $this->redirect('/');
-            }
-
-            $page = $subpage = $title_for_layout = null;
-
-            if (!empty($path[0])) {
-                    $page = $path[0];
-            }
-
-            if (!empty($path[$count - 1])) {
-                    $title_for_layout = "The Dilemma | A game to drive you mad...";//Inflector::humanize($path[$count - 1]);
-            }
-
-            $this->set(compact('page', 'title_for_layout'));
-
-            try {
-                    $this->render(implode('/', $path));
-            } catch (MissingViewException $e) {
-                    if (Configure::read('debug')) {
-                            throw $e;
-                    }
-                    throw new NotFoundException();
-            }
+            throw new NotFoundException();
+        }
     }
+
 }

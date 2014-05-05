@@ -12,8 +12,8 @@
             }
         });
 
-        var pgbar = $('#bot_progressbar');
-        var pglbl = $('.bot-progress-label');
+        var pgbar = $('#progressbar');
+        var pglbl = $('.progress-label');
         pgbar.hide();
         pgbar.progressbar({value: false,
             complete: function() {
@@ -109,6 +109,27 @@
         });
     }
 
+    function pad_stat(num) {
+        var newnum = num + "";
+        while (newnum.length < 3) {
+            newnum = "0" + newnum;
+        }
+        return newnum;
+    }
+
+    function format_username(name) {
+        var newname = name;
+        if (name.length > 10) {
+            newname = name.substring(0, 8) + "...";
+        } else {
+            var pad = 10 - name.length;
+            for (var i = 0; i < pad; i++) {
+                newname += '&nbsp;';
+            }
+        }
+        return newname;
+    }
+
     function add_user(pid, username, clantag, plie, pshare, phide, pwin) {
         var id = username;
         var total = parseInt(plie) + parseInt(pshare) + parseInt(phide);
@@ -116,8 +137,14 @@
         var percsha = ((parseInt(pshare) / total) * 100).toFixed(0);
         var perchid = ((parseInt(phide) / total) * 100).toFixed(0);
         var percwin = ((parseInt(pwin) / total) * 100).toFixed(0);
+        
+        username = format_username(username);
 
-        var text = "<li class='ui-widget-content user-item' pid='" + pid + "' id = '" + id + "'><a href='test'>" + (username >= 10 ? username.substring(0, 10) + "..." : username) + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>L: </b>" + (isNaN(perclie) ? ' -- ' : perclie) + "%,&nbsp;&nbsp; <b>S: </b>" + (isNaN(percsha) ? ' --  ' : percsha) + "%,&nbsp;&nbsp; <b>H: </b>" + (isNaN(perchid) ? ' -- ' : perchid) + "%,&nbsp;&nbsp; <b>W: </b>" + (isNaN(percwin) ? ' -- ' : percwin) + "%</a></li>";
+        var text = "<li class='ui-widget-content user-item' pid='" + pid + "' id = '" + id + 
+                    "'><table class='playerEntry' style='width:100%; color: #212121'><tr><td width='100px'>" + username + "</td><td><b>L: </b>" + (isNaN(perclie) ? ' -- ' : pad_stat(perclie)) +
+                    "%,</td><td><b>S: </b>" + (isNaN(percsha) ? ' --  ' : pad_stat(percsha)) +
+                    "%,</td><td><b>H: </b>" + (isNaN(perchid) ? ' -- ' : pad_stat(perchid)) +
+                    "%,</td><td><b>W: </b>" + (isNaN(percwin) ? ' -- ' : pad_stat(percwin)) + "%</td></tr></table></li>";
         $("#lobby_select").append(text);
         $("#lobby_select").selectable("refresh");
     }
@@ -140,6 +167,11 @@
     }
 </script>
 <style>
+    #playerEntry{
+        width:100%;
+        color: #212121;
+    }
+    
     #main {
         width: 550px;
         /*        margin-top: -450px;*/
@@ -162,7 +194,7 @@
         width: 100%;
     }
 
-    #lobby_select { width: 475px; }
+    #lobby_select { width: 500px; }
 
     /*    #feedback { font-size: 1.4em; }*/
     #lobby_select .ui-selecting { background: #FECA40; }
@@ -175,14 +207,18 @@
         position: relative;
     }
 
-    .bot-progress-label {
-        position: absolute;
-        left: 45%;
-        top: 255px;
-        /*        left: 58%;
-                top: 265px;*/
+    .progress-label {
+        position: relative;
+        left: 32%;
+        top: 10px;
+        margin-bottom: -20px;
         font-weight: bold;
         text-shadow: 1px 1px 0 #fff;
+    }
+
+    #progressbar {
+        margin: 0 auto 10px auto; 
+        width: 500px;
     }
 
     #playerStats {
@@ -206,25 +242,14 @@
         width: 500px;
         margin: 0 auto 0 auto;
         text-align: center;
-    }
-
-    /*    #descript {
-            text-align: center;
-            margin: 10px;
-        }
-    
-        #descript p{
-            font-size:15px;
-        }
-    
-    */    
+    } 
 
     .description p {
         font-size: 20px;
         margin: 10px 0 0 0;
     }
     #descript {
-        width: 500px;
+        width: 494px;
         margin: 0 auto 10px auto;
     }
 
@@ -234,6 +259,21 @@
 
     #descript h3 {
         text-align: center;
+    }
+
+    #players_list {
+        width: 500px; 
+        height: 250px; 
+        overflow-y: hidden; 
+        margin-left:auto; 
+        margin-right:auto;
+    }
+
+    #players_list::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #D62929;
+
     }
 </style>
 
@@ -246,13 +286,13 @@
         </p>
     </div>
 </div>
-<div id="bot_progressbar" style="margin: 0 auto 10px auto; width: 500px"><div class="bot-progress-label">...sending in the bots...</div></div>
-<div style="width: 500px; height: 250px; overflow-y: scroll; margin-left:auto; margin-right:auto;">
+<div id="progressbar"><div class="progress-label">...sending in the bots...</div></div>
+<div id="players_list">
     <ul id="lobby_select">
     </ul>
 </div>
 <div id="playnow" class="description">
-    <p>SELECT A PLAYER AND PRESS PLAY!</p>
+    <p>SELECT A PLAYER ABOVE AND PRESS PLAY!</p>
 </div>
 <div style="text-align:center;"><button id="btn_play">PLAY</button></div><br />
 
