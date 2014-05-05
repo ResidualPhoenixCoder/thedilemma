@@ -21,6 +21,8 @@
             }
         });
 
+        $("#descript").accordion({active: false, collapsible: true, heightStyle: "content"});
+
         $("#lobby_select").selectable({
             selected: user_selected,
             unselected: user_selected
@@ -206,26 +208,43 @@
         text-align: center;
     }
 
-    #descript {
-        text-align: center;
-        margin: 10px;
-    }
-
-    #descript p{
-        font-size:15px;
-    }
+    /*    #descript {
+            text-align: center;
+            margin: 10px;
+        }
+    
+        #descript p{
+            font-size:15px;
+        }
+    
+    */    
 
     .description p {
         font-size: 20px;
         margin: 10px 0 0 0;
     }
+    #descript {
+        width: 500px;
+        margin: 0 auto 10px auto;
+    }
+
+    #descript .ui-icon {
+        display: none;
+    }
+
+    #descript h3 {
+        text-align: center;
+    }
 </style>
 
 <h1><?php echo $player; ?>'s Lobby</h1>
-<div id="descript" class="description">
-    <p>
-        In each game, you will have 10 second to answer a choice question, and then you can choose your action button to influence your opponent. The best strategy is that you get the right answer and make your opponent get the wrong answer. Then you can get the full points in this game. Don’t forget the opponent’s profile. It can help you analyze your opponent’s strategy. In the profile, there are history records of cheat, share and hide for this player. For example, if your opponent’s cheat percentage is high, that means this player is good at influence other players. You should rethink your opponent’s answer if it is post. Every day, there are some special questions. Try it! You can get special credits! 
-    </p>
+<div id="descript">
+    <h3>Game Description</h3>
+    <div id="entry">
+        <p>
+            In each game, you will have 10 second to answer a choice question, and then you can choose your action button to influence your opponent. The best strategy is that you get the right answer and make your opponent get the wrong answer. Then you can get the full points in this game. Don’t forget the opponent’s profile. It can help you analyze your opponent’s strategy. In the profile, there are history records of cheat, share and hide for this player. For example, if your opponent’s cheat percentage is high, that means this player is good at influence other players. You should rethink your opponent’s answer if it is post. Every day, there are some special questions. Try it! You can get special credits! 
+        </p>
+    </div>
 </div>
 <div id="bot_progressbar" style="margin: 0 auto 10px auto; width: 500px"><div class="bot-progress-label">...sending in the bots...</div></div>
 <div style="width: 500px; height: 250px; overflow-y: scroll; margin-left:auto; margin-right:auto;">
