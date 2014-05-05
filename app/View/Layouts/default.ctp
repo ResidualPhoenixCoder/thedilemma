@@ -59,7 +59,7 @@
 
             }*/
 
-#main{
+/*#main{
     width: 400px;
     position: absolute;
     top: 50%;
@@ -70,7 +70,7 @@
     background-color: #7D1935;
     box-shadow: 8px 8px 15px #949494;
     border-radius: 20px;
-}
+}*/
         </style>
     </head>
 
