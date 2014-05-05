@@ -30,8 +30,8 @@ class DilemmasController extends AppController {
             $this->autoRender=false;
             $data = $this->request->input('json_decode', true);
             if(!empty($data) && !(empty($data['username']) || empty($data['password']) || empty($data['email']))) {
-                $playerByUsername = $this->Player->find('first', array('conditions' => array('Player.username' => $data['username'])));
-                $playerByEmail = $this->Player->find('first', array('conditions' => array('Player.email' => $data['email'])));
+                $playerByUsername = $this->Player->find('first', array('conditions' => array('Player.username' => mysql_real_escape_string($data['username']))));
+                $playerByEmail = $this->Player->find('first', array('conditions' => array('Player.email' => mysql_real_escape_string($data['email']))));
                 
                 //Check whether this player exists by username or e-mail.
                 if(!empty($playerByUsername) || !empty($playerByEmail)) {
@@ -79,7 +79,7 @@ class DilemmasController extends AppController {
             $this->autoRender = false;
             if($this->request->is('post')) {
                 $data = $this->request->input('json_decode', true);
-                $this->request->data['Player']['username'] = $data['username'];
+                $this->request->data['Player']['username'] = mysql_real_escape_string($data['username']);
                 $this->request->data['Player']['password'] = $data['password'];
                 $this->Auth->authenticate = array(AuthComponent::ALL => array('userModel' => 'Player'), 'Basic', 'Form');
                 if($this->Auth->login()) {

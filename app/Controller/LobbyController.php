@@ -23,9 +23,15 @@ class LobbyController extends AppController{
         $player = $data['Player'];
         $stat = array();
         $total = $player['hide'] + $player['share'] + $player['lie'];
-        $stat['hide'] = number_format(floor(($player['hide'] / $total) * 100), 0);
-        $stat['share'] = number_format(floor(($player['share'] / $total)*100), 0);
-        $stat['lie'] = number_format(floor(($player['lie'] / $total) * 100), 0);
+        if($total != 0) {
+            $stat['hide'] = number_format(floor(($player['hide'] / $total) * 100), 0);
+            $stat['share'] = number_format(floor(($player['share'] / $total) * 100), 0);
+            $stat['lie'] = number_format(floor(($player['lie'] / $total) * 100), 0);
+        } else {
+            $stat['hide'] = '--';
+            $stat['share'] = '--';
+            $stat['lie'] = '--';
+        }
         $this->set('stat', $stat);
     }
     
