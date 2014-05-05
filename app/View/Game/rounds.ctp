@@ -217,7 +217,7 @@
             save_answers();
 
             /*DETERMINE POINTS EARNED THIS ROUND*/
-            points_accounting();
+            points_accounting2();
             update_score();
 //            alert("PlayerAns: " + playerAnswer + ", PlayerAct: " + playerAction);
 
@@ -261,6 +261,57 @@
     function update_score() {
         $("#youScore").text(playerPoints);
         $("#themScore").text(opponentPoints);
+    }
+
+    function points_accounting2() {
+        var ScoreTable = [
+            [[8, 8], [10, -2], [-2, 10], [-2, -2]],
+            [[6, 8], [6, 0], [2, 8], [2, 0]],
+            [[8, 8], [10, -2], [-4, 8], [-4, -2]],
+            [[8, 6], [8, 0], [-2, 0], [-2, 0]],
+            [[8, 8], [8, -4], [-2, 8], [-2, -4]]
+        ];
+
+        var opponentAction = currq.player_act;
+
+        if (playerAction === "S" && opponentAction === "S") {
+            var sAns = (Math.floor(Math.random() * 2) % 2) ? playerAnswer : currq.player_true_answer;
+            if (sAns === currq.correct_answer) {
+                playerPoints += 6;
+                opponentPoints += 6;
+            }
+        } else {
+            var pR = (playerAnswer === currq.correct_answer) ? 1 : 0;
+            var oR = (currq.player_true_answer === currq.correct_answer) ? 1 : 0;
+            var row = 0;
+            var col = ((pR ^ 1) << 1) + (oR ^ 1);
+            
+            if (opponentAction === "H") {
+                switch (playerAction) {
+                    case "H":
+                        row = 0;
+                        break;
+                    case "S":
+                        row = 1;
+                    case "L":
+                        row = 2;
+                }
+            } else {
+                switch(opponentAction) {
+                    case "S":
+                        row = 3;
+                        break;
+                    case "L":
+                        row = 4;
+                        break;
+                }
+            }
+            
+            var score = ScoreTable[row][col];
+            playerPoints += score[0];
+            opponentPoints += score[1];
+//            alert("Player Action: " + playerAction + " Opp Action: " + opponentAction + "\nPAns: " + playerAnswer + "OAns: " + currq.player_true_answer + "\nPPoints: " + score[0] + " OPoints: " + score[1] + "\nCorrect: " + currq.correct_answer);
+        }
     }
 
     function points_accounting() {

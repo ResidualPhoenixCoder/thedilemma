@@ -1,6 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
-
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 class DilemmasController extends AppController {
         public function beforeFilter() {
             parent::beforeFilter();
@@ -55,7 +55,8 @@ class DilemmasController extends AppController {
                     $data['exists'] = true;
                 } else {
                     //Create the new user object to be inserted into the database.
-                    $newUser = array('username' => $data['username'], 'email' => $data['email'], 'password' => $data['password']);
+                    $passwordHasher = new SimplePasswordHasher();
+                    $newUser = array('username' => $data['username'], 'email' => $data['email'], 'password' => $passwordHasher->hash($data['password']));
                     try{
                         $this->Player->create();
                         $this->Player->save($newUser); //Inserts this user into the database.

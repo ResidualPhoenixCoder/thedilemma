@@ -45,14 +45,14 @@ class Player extends AppModel {
      */
     public $displayField = 'username';
 
-    public function beforeSave() {
-        if (isset($this->data[$this->alias]['password'])) {
-            $passwordHasher = new SimplePasswordHasher();
-            $this->data[$this->alias]['password'] = $passwordHasher->hash(
-                    $this->data[$this->alias]['password']
-            );
-        }
-        return true;
-    }
+//    public function beforeSave() {
+//        if (isset($this->data[$this->alias]['password'])) {
+//            $passwordHasher = new SimplePasswordHasher();
+//            $this->data[$this->alias]['password'] = $passwordHasher->hash(
+//                    $this->data[$this->alias]['password']
+//            );
+//        }
+//        return true;
+//    }
 
 }
