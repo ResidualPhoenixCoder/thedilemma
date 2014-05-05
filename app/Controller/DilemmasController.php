@@ -79,7 +79,7 @@ class DilemmasController extends AppController {
             $this->autoRender = false;
             if($this->request->is('post')) {
                 $data = $this->request->input('json_decode', true);
-                $this->request->data['Player']['username'] = mysql_real_escape_string($data['username']);
+                $this->request->data['Player']['username'] = $data['username'];
                 $this->request->data['Player']['password'] = $data['password'];
                 $this->Auth->authenticate = array(AuthComponent::ALL => array('userModel' => 'Player'), 'Basic', 'Form');
                 if($this->Auth->login()) {
