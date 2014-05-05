@@ -93,7 +93,7 @@ class GameController extends AppController {
         $this->Player->updateAll(array('Player.totalpoints' => 'Player.totalpoints + ' . $data['winfinal']), array('Player.pid' => $data['winner']));
         $this->Player->updateAll(array('Player.totalpoints' => 'Player.totalpoints + ' . $data['losefinal']), array('Player.pid' => $data['loser']));
 
-        if ($data['draw'] == true) {
+        if ($data['draw'] == "yes") {
             $this->Player->updateAll(array('Player.draws' => 'Player.draws + 1'), array('OR' =>
                 array(
                     array('Player.pid' => $data['winner']),

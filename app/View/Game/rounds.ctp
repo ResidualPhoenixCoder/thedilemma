@@ -37,16 +37,18 @@
             max_time = 10;
             cinterval = setInterval("countdown_timer()", gameSpeed);
         } else {
+            $("#draw").val("no");
             $("#winner").val(pid);
             $("#loser").val(opponent.pid);
             $("#winfinal").val(playerPoints);
             $("#losefinal").val(opponentPoints);
 
             if (playerPoints === opponentPoints) {
-                $("#draw").val(true);
+                $("#draw").val("yes");
                 $("#winfinal").val(playerPoints);
                 $("#losefinal").val(opponentPoints);
             } else if (playerPoints < opponentPoints) {
+                $("#draw").val("no");
                 $("#winner").val(opponent.pid);
                 $("#winfinal").val(opponentPoints);
                 $("#loser").val(pid);
@@ -235,16 +237,18 @@
             max_time = 10;
             cinterval = setInterval("countdown_timer()", gameSpeed);
         } else {
+            $("#draw").val("no");
             $("#winner").val(pid);
             $("#loser").val(opponent.pid);
             $("#winfinal").val(playerPoints);
             $("#losefinal").val(opponentPoints);
 
             if (playerPoints === opponentPoints) {
-                $("#draw").val(true);
+                $("#draw").val("yes");
                 $("#winfinal").val(playerPoints);
                 $("#losefinal").val(opponentPoints);
             } else if (playerPoints < opponentPoints) {
+                $("#draw").val("no");
                 $("#winner").val(opponent.pid);
                 $("#winfinal").val(opponentPoints);
                 $("#loser").val(pid);
@@ -576,7 +580,7 @@
     </div>
 </div>
 <form id="form_game_complete" method="post" action="<?php echo Router::url(array('controller' => 'game', 'action' => 'game_complete')); ?>">
-    <input id="draw" name ="draw" type="hidden" value ="false" />
+    <input id="draw" name ="draw" type="hidden" value ="no" />
     <input id="winner" name="winner" type="hidden" value="<?php echo $current; ?>"/>
     <input id="loser" name="loser" type="hidden" value="<?php echo $opponent['pid']; ?>"/>
     <input id="winfinal" name="winfinal" type="hidden"/>

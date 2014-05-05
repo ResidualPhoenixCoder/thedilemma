@@ -34,7 +34,7 @@
 <table id="results">
     <tr>
         <td><span id="toast"><?php
-                if ($results['draw'] == false) {
+                if ($results['draw'] == "yes") {
                     echo "It was a draw!";
                 } else if ($results['winner'] == $pid) {
                     echo "You won!";
