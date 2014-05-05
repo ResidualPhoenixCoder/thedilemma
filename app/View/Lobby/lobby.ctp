@@ -137,14 +137,15 @@
         var percsha = ((parseInt(pshare) / total) * 100).toFixed(0);
         var perchid = ((parseInt(phide) / total) * 100).toFixed(0);
         var percwin = ((parseInt(pwin) / total) * 100).toFixed(0);
-        
+
         username = format_username(username);
 
-        var text = "<li class='ui-widget-content user-item' pid='" + pid + "' id = '" + id + 
-                    "'><table class='playerEntry' style='width:100%; color: #212121'><tr><td width='100px'>" + username + "</td><td><b>L: </b>" + (isNaN(perclie) ? ' -- ' : pad_stat(perclie)) +
-                    "%,</td><td><b>S: </b>" + (isNaN(percsha) ? ' --  ' : pad_stat(percsha)) +
-                    "%,</td><td><b>H: </b>" + (isNaN(perchid) ? ' -- ' : pad_stat(perchid)) +
-                    "%,</td><td><b>W: </b>" + (isNaN(percwin) ? ' -- ' : pad_stat(percwin)) + "%</td></tr></table></li>";
+        var text = "<li class='ui-widget-content user-item' pid='" + pid + "' id = '" + id +
+                "'><table class='playerEntry' style='width:100%; color: #212121'><tr><td width='100px'>" + username +
+                "</td><td><b>H: </b>" + (isNaN(perchid) ? ' -- ' : pad_stat(perchid)) +
+                "%,</td><td><b>S: </b>" + (isNaN(percsha) ? ' --  ' : pad_stat(percsha)) +
+                "%,</td><td><b>L: </b>" + (isNaN(perclie) ? ' -- ' : pad_stat(perclie)) +
+                "%,</td><td><b>W: </b>" + (isNaN(percwin) ? ' -- ' : pad_stat(percwin)) + "%</td></tr></table></li>";
         $("#lobby_select").append(text);
         $("#lobby_select").selectable("refresh");
     }
@@ -171,7 +172,7 @@
         width:100%;
         color: #212121;
     }
-    
+
     #main {
         width: 550px;
         /*        margin-top: -450px;*/
@@ -299,11 +300,11 @@
 <div id="second_menu" style="text-align:left;"><button id="bot">Run a Bot Simulation</button><br><button id="player">Get Random Set of Players</button></div><br />
 <div id="playerStats">
     <table id="stats">
-        <tr><td><b>My Hides</b></td><td><b>My Shares</b></td><td><b>My Lies</b></td><td></tr>
+        <tr><td><b>My Hides (H)</b></td><td><b>My Shares (S)</b></td><td><b>My Lies (L)</b></td><td></tr>
         <tr><td colspan="4"> <hr></td></tr>
         <tr><td><?php echo $stat['hide']; ?>%</td><td><?php echo $stat['share']; ?>%</td><td><?php echo $stat['lie']; ?>%</td></tr>
         <tr><td colspan="3">&nbsp;</tr>
-        <tr><td><b>My Wins</b></td><td><b>My Losses</b></td><td><b>My Draws</b></td></tr>
+        <tr><td><b>My Wins (W)</b></td><td><b>My Losses</b></td><td><b>My Draws</b></td></tr>
         <tr><td colspan="4"> <hr></td></tr>
         <tr><td><?php echo $stat['wins']; ?></td><td><?php echo $stat['losses']; ?></td><td><?php echo $stat['draws']; ?></td></tr>
     </table>
