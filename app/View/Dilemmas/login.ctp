@@ -66,7 +66,7 @@ $(function() {
 </script>
 <style>
 #main {
-	margin-top: -150px;
+	margin-top: 15%;
 }
 
 table {

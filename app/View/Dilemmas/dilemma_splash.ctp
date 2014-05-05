@@ -10,7 +10,7 @@
 
 <style>
 	#main {
-		margin-top: -200px;
+		margin-top: 15%;
 	}
 
 	#btn_begin {

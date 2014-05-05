@@ -118,8 +118,8 @@ $(function() {
 <style>
 #main {
 	width: 500px;
-	margin-top: -250px;
-	margin-left: -250px;
+	margin-top: 15%;
+/*	margin-left: -250px;*/
 }
 
 table {

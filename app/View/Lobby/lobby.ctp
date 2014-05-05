@@ -140,8 +140,8 @@
 <style>
     #main {
         width: 550px;
-        margin-top: -450px;
-        margin-left: -275px;
+/*        margin-top: -450px;*/
+/*        margin-left: -275px;*/
         margin-bottom: 80px;
     }
 
