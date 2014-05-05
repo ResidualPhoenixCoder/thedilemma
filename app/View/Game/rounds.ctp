@@ -187,7 +187,7 @@
             change_background();
             currq = questions[qctr]['RoundAnswer'];
             load_question(currq);
-            max_time = 11;
+            max_time = 10;
             cinterval = setInterval("countdown_timer()", gameSpeed);
         } else {
             $("#winner").val(pid);
@@ -327,7 +327,7 @@
         margin-right: auto;
         text-align: left;
         border-style: none;
-        height: 103%;
+        height: 106%;
     }
 
     html, body {
@@ -350,7 +350,7 @@
     }
 
     #countdown {
-        font-size: 60px;
+        font-size: 100px;
     }
 
     .main-arena {
@@ -455,7 +455,7 @@
 <div id="wrapper">
 
     <div id="timer">
-        DECIDE<br />
+        DECIDE! 
         <span id="countdown">10</span>
     </div>
 

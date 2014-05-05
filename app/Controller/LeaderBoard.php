@@ -17,5 +17,4 @@ class LeaderBoard extends AppController {
     public function index($id) {
         
     }
-
 }
