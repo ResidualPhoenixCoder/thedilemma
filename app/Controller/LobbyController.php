@@ -17,7 +17,16 @@ class LobbyController extends AppController{
     }
     
     public function lobby() {
+        $this->loadModel('Player');
+        $data = $this->Player->find('first', array('conditions' => array('Player.pid' => $this->Auth->user('pid'))));
         
+        $player = $data['Player'];
+        $stat = array();
+        $total = $player['hide'] + $player['share'] + $player['lie'];
+        $stat['hide'] = number_format(floor(($player['hide'] / $total) * 100), 0);
+        $stat['share'] = number_format(floor(($player['share'] / $total)*100), 0);
+        $stat['lie'] = number_format(floor(($player['lie'] / $total) * 100), 0);
+        $this->set('stat', $stat);
     }
     
     public function getPlayers() {

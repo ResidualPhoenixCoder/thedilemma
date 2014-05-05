@@ -113,9 +113,9 @@
         var perclie = ((parseInt(plie) / total) * 100).toFixed(0);
         var percsha = ((parseInt(pshare) / total) * 100).toFixed(0);
         var perchid = ((parseInt(phide) / total) * 100).toFixed(0);
-        var percwin = ((parseInt(pwin) /total) * 100).toFixed(0);
+        var percwin = ((parseInt(pwin) / total) * 100).toFixed(0);
 
-        var text = "<li class='ui-widget-content user-item' pid='" + pid + "' id = '" + id + "'><a href='test'>" + (username >= 10 ? username.substring(0, 10) + "..." : username) + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>L: </b>" + (isNaN(perclie) ? ' -- ' : perclie) + "%,&nbsp;&nbsp; <b>S: </b>" + (isNaN(percsha) ? ' --  ' : percsha) + "%,&nbsp;&nbsp; <b>H: </b>" + (isNaN(perchid) ? ' -- ' : perchid) + "%,&nbsp;&nbsp; <b>W: </b>" + (isNaN(percwin) ? ' -- ' : percwin) +"%</a></li>";
+        var text = "<li class='ui-widget-content user-item' pid='" + pid + "' id = '" + id + "'><a href='test'>" + (username >= 10 ? username.substring(0, 10) + "..." : username) + " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>L: </b>" + (isNaN(perclie) ? ' -- ' : perclie) + "%,&nbsp;&nbsp; <b>S: </b>" + (isNaN(percsha) ? ' --  ' : percsha) + "%,&nbsp;&nbsp; <b>H: </b>" + (isNaN(perchid) ? ' -- ' : perchid) + "%,&nbsp;&nbsp; <b>W: </b>" + (isNaN(percwin) ? ' -- ' : percwin) + "%</a></li>";
         $("#lobby_select").append(text);
         $("#lobby_select").selectable("refresh");
     }
@@ -138,14 +138,8 @@
     }
 </script>
 <style>
-    #main {
-        width: 550px;
-        margin-top: -300px;
-        margin-left: -275px;
-    }
-
     #btn_play {
-        margin-top: 20px;
+        margin-top: 10px;
         width: 500px;
         height: 50px
     }
@@ -154,7 +148,7 @@
         width:500px;
         margin: auto auto;
     }
-    
+
     #second_menu button {
         width: 100%;
     }
@@ -174,22 +168,74 @@
 
     .bot-progress-label {
         position: absolute;
-        left: 30%;
-        top: 75px;
+        left: 58%;
+        top: 265px;
         font-weight: bold;
         text-shadow: 1px 1px 0 #fff;
     }
+
+    #playerStats {
+        width: 480px;
+        margin: 0 auto 20px auto;
+        padding: 10px;
+        background: #212121;
+        border-radius: 20px;
+    }
+
+    #playerStats table {
+        width: 100%;
+        text-align: center;
+    }
+
+    h2 {
+        margin: 0 0 0 0;
+    }
+
+    #playnow {
+        width: 500px;
+        margin: 0 auto 0 auto;
+        text-align: center;
+    }
+    
+    #descript {
+        text-align: center;
+        margin: 10px;
+    }
+    
+    #descript p{
+        font-size:15px;
+    }
+
+    .description p {
+        font-size: 20px;
+        margin: 10px 0 0 0;
+    }
 </style>
 
-<h1>LOBBY</h1>
-
+<h1>The Dilemma LOBBY</h1>
+<div id="descript" class="description">
+    <p>
+        In each game, you will have 10 second to answer a choice question, and then you can choose your action button to influence your opponent. The best strategy is that you get the right answer and make your opponent get the wrong answer. Then you can get the full points in this game. Don’t forget the opponent’s profile. It can help you analyze your opponent’s strategy. In the profile, there are history records of cheat, share and hide for this player. For example, if your opponent’s cheat percentage is high, that means this player is good at influence other players. You should rethink your opponent’s answer if it is post. Every day, there are some special questions. Try it! You can get special credits! 
+    </p>
+</div>
 <div id="bot_progressbar" style="margin: 0 auto 10px auto; width: 500px"><div class="bot-progress-label">...sending in the bots...</div></div>
 <div style="width: 500px; height: 250px; overflow-y: scroll; margin-left:auto; margin-right:auto;">
     <ul id="lobby_select">
     </ul>
 </div>
+<div id="playnow" class="description">
+    <p>SELECT A PLAYER AND PRESS PLAY!</p>
+</div>
 <div style="text-align:center;"><button id="btn_play">PLAY</button></div><br />
+
 <div id="second_menu" style="text-align:left;"><button id="bot">Run a Bot Simulation</button><br><button id="player">Get Random Set of Players</button></div><br />
+<div id="playerStats">
+    <table id="stats">
+        <tr><td><b>My Hides</b></td><td><b>My Shares</b></td><td><b>My Lies</b></td></tr>
+        <tr><td colspan="3"> <hr></td></tr>
+        <tr><td><?php echo $stat['hide']; ?>%</td><td><?php echo $stat['share']; ?>%</td><td><?php echo $stat['lie']; ?>%</td></tr>
+    </table>
+</div>
 <form id="form_round_start" method="post" action="<?php echo Router::url(array('controller' => 'game', 'action' => 'rounds')); ?>">
     <input id="player2" name="player2" type="hidden"/>
     <input id="player2_pid" name="player2_pid" type="hidden"/>

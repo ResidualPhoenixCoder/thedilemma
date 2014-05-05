@@ -531,4 +531,5 @@
     <input id="loser" name="loser" type="hidden" value="<?php echo $opponent['pid']; ?>"/>
     <input id="winfinal" name="winfinal" type="hidden"/>
     <input id="losefinal" name="losefinal" type="hidden"/>
+    <input id="qgroup" name="qgroup" type="hidden" value="<?php echo $question_group; ?>"/>
 </form>

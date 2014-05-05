@@ -90,6 +90,9 @@ class GameController extends AppController {
                 )
         );
         
+        $this->Player->updateAll(array('Player' => 'Player.totalpoints + ' . $data['winfinal']), array('Player.pid' => $data['winner']));
+        $this->Player->updateAll(array('Player' => 'Player.totalpoints + ' . $data['losefinal']), array('Player.pid' => $data['loser']));
+        
         $this->set('results', $data);
         $this->set('resultsJSON', json_encode($data));
         $this->set('pid', $this->Auth->user('pid'));
