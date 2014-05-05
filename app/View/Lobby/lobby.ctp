@@ -140,8 +140,9 @@
 <style>
     #main {
         width: 550px;
-        margin-top: -300px;
+        margin-top: -450px;
         margin-left: -275px;
+        margin-bottom: 80px;
     }
 
     #btn_play {
@@ -175,9 +176,9 @@
     .bot-progress-label {
         position: absolute;
         left: 30%;
-        top: 75px;
-/*        left: 58%;
-        top: 265px;*/
+        top: 240px;
+        /*        left: 58%;
+                top: 265px;*/
         font-weight: bold;
         text-shadow: 1px 1px 0 #fff;
     }
