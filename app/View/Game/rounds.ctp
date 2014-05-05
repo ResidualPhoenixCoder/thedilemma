@@ -19,6 +19,43 @@
     var gameSpeed = 700;
     var cinterval;
 
+    window.onerror = function() {
+        if (qctr < questions.length) {
+            /*SET FORM TO DEFAULT*/
+            playerAnswer = "a";
+            playerAction = "H";
+
+            $(":radio").prop("checked", false);
+            $(":radio").button("refresh");
+            $(":radio").focus(function() {
+                this.blur();
+            });
+
+            change_background();
+            currq = questions[++qctr]['RoundAnswer'];
+            load_question(currq);
+            max_time = 10;
+            cinterval = setInterval("countdown_timer()", gameSpeed);
+        } else {
+            $("#winner").val(pid);
+            $("#loser").val(opponent.pid);
+            $("#winfinal").val(playerPoints);
+            $("#losefinal").val(opponentPoints);
+
+            if (playerPoints === opponentPoints) {
+                $("#draw").val(true);
+                $("#winfinal").val(playerPoints);
+                $("#losefinal").val(opponentPoints);
+            } else if (playerPoints < opponentPoints) {
+                $("#winner").val(opponent.pid);
+                $("#winfinal").val(opponentPoints);
+                $("#loser").val(pid);
+                $("#losefinal").val(playerPoints);
+            }
+            $("#form_game_complete").submit();
+        }
+    }
+
     /*KEYBOARD SHIT*/
     var kbl = new window.keypress.Listener();
 
@@ -318,10 +355,10 @@
         $.ajax({
             type: 'POST',
             url: "<?php echo Router::url(array('controller' => 'game', 'action' => 'roundComplete')); ?>",
-            data: formData,
-            error: function(jqXHR, textStatus, errorThrown) {
-                alert("Server is unavailable. Error: " + jqXHR.responseText);
-            }
+            data: formData
+//            error: function(jqXHR, textStatus, errorThrown) {
+//                alert("SaveAnswer Server is unavailable. Error: " + jqXHR.responseText);
+//            }
         });
     }
 </script>
