@@ -43,7 +43,7 @@ class GameController extends AppController {
         $this->set('question_group', uniqid());
         $this->set('current', $current);
         $this->set('opponent', json_encode($opponent['Player']));
-        $this->set('music', $this->webroot . 'media/' . rand(1, 5) .'.mp3');
+        $this->set('music', $this->webroot . 'media/' . rand(1, 5) . '.mp3');
     }
 
     public function roundComplete() {
@@ -64,14 +64,14 @@ class GameController extends AppController {
         $qid = $data['question_id'];
         $qg = $data['question_group'];
         $qo = $data['question_order'];
-        
+
         //ADMINISTRATION OF ROUND RECORDS
         $p1data = $this->assemble_player_record($data['player'], $data['player_act'], $data['player_true_answer'], $data['player_lie_answer'], $qid, $qg, $qo);
         $p2data = $this->assemble_player_record($data['opponent'], $data['opponent_act'], $data['opponent_true_answer'], $data['opponent_lie_answer'], $qid, $qg, $qo);
-        
+
         $p1vp2 = $this->assemble_round_record($p1data, $p2data, $qid, $qg, $qo);
         $p2vp1 = $this->assemble_round_record($p2data, $p1data, $qid, $qg, $qo);
-        
+
         $this->save_round($p1vp2);
         $this->save_round($p2vp1);
     }
@@ -89,10 +89,21 @@ class GameController extends AppController {
             )
                 )
         );
-        
+
         $this->Player->updateAll(array('Player.totalpoints' => 'Player.totalpoints + ' . $data['winfinal']), array('Player.pid' => $data['winner']));
         $this->Player->updateAll(array('Player.totalpoints' => 'Player.totalpoints + ' . $data['losefinal']), array('Player.pid' => $data['loser']));
-        
+
+        if ($data['draw'] == true) {
+            $this->Player->updateAll(array('Player.draws' => 'Player.draws + 1'), array('OR' =>
+                array(
+                    array('Player.pid' => $data['winner']),
+                    array('Player.pid' => $data['loser'])
+                )
+            ));
+        } else {
+            $this->Player->updateAll(array('Player.wins' => 'Player.wins + 1'), array('Player.pid' => $data['winner']));
+        }
+
         $this->set('results', $data);
         $this->set('resultsJSON', json_encode($data));
         $this->set('pid', $this->Auth->user('pid'));
@@ -149,7 +160,7 @@ class GameController extends AppController {
                 $this->Player->updateAll(array('Player.hide' => 'Player.hide + 1'), array('Player.pid' => $pid));
                 break;
             case "S":
-                $this->Player->updateAll(array('Player.share'=> 'Player.share + 1'), array('Player.pid' => $pid));
+                $this->Player->updateAll(array('Player.share' => 'Player.share + 1'), array('Player.pid' => $pid));
                 break;
         }
     }

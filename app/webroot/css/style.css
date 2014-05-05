@@ -1,66 +1,76 @@
 .ui-menu { width: 150px; }
 
 h1 {
-	text-align: center;
-	font-size: xx-large;
-	margin: 15px;
+    text-align: center;
+    font-size: xx-large;
+    margin: 15px;
 }
 
 body {
-	background-color: #212121;
-	color: #FFFFFF;
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
+    background-color: #212121;
+    color: #FFFFFF;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
 #main {
-	width: 400px;
-/*	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-left: -200px;*/
-	border: 10px solid;
-	border-color: #4A96AD;
-	background-color: #7D1935;
-	box-shadow: 8px 8px 15px #949494;
-	border-radius: 20px;
-        margin: auto auto;
+    margin-top:15%;
+    width: 400px;
+    /*	position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -200px;*/
+    border: 10px solid;
+    border-color: #4A96AD;
+    background-color: #7D1935;
+    box-shadow: 8px 8px 15px #949494;
+    border-radius: 20px;
+    margin: auto auto;
 }
 
 #footer {
     width: 100%;
-/*    text-align:center;*/
+    /*    text-align:center;*/
     text-align: right;
 }
 
 #menu {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 .ctext {
-	text-align: center;
+    text-align: center;
 }
 
 p {
-	font-size: small;
+    font-size: small;
 }
 
 label {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .block {
-	padding-left: 20px;
-	padding-right: 20px;
-	text-align: justify;
-	text-justify: inter-word;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .registration_fields {
-    	width: 250px;
-	height: 25px;
+    width: 250px;
+    height: 25px;
 }
 
 .border_error {
     border: 1px solid red;
+}
+
+#logo {
+    position: absolute;
+    border: 0px;
+    padding: 5px;
+    margin: 0px;
+    top: 0px;
+    left: 0px;
 }

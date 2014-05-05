@@ -75,17 +75,17 @@
         kbl.simple_combo('2', function() {
             $("#rdoAnsB").prop('checked', true);
             $("#rdoAnsB").button("refresh");
-                        playerAnswer = "b";
+            playerAnswer = "b";
         });
         kbl.simple_combo('3', function() {
             $("#rdoAnsC").prop('checked', true);
             $("#rdoAnsC").button("refresh");
-                        playerAnswer = "c";
+            playerAnswer = "c";
         });
         kbl.simple_combo('4', function() {
             $("#rdoAnsD").prop('checked', true);
             $("#rdoAnsD").button("refresh");
-                        playerAnswer = "d";
+            playerAnswer = "d";
         });
 
         /*Actions*/
@@ -109,19 +109,27 @@
     function load_question(q) {
         switch (q.player_act) {
             case "L":
-                $("#spnDecision").html(q.player_lie_answer.toUpperCase());
+                if (q.player_lie_answer) {
+                    $("#spnDecision").html(q.player_lie_answer.toUpperCase());
+                } else {
+                    $("#spnDecision").html("Hidden");
+                }
                 break;
             case "H":
                 $("#spnDecision").html("Hidden");
                 break;
             case "S":
-                $("#spnDecision").html(q.player_true_answer.toUpperCase());
+                if (q.player_true_answer) {
+                    $("#spnDecision").html(q.player_true_answer.toUpperCase());
+                } else {
+                    $("#spnDecision").html("Hidden");
+                }
                 break;
             default:
                 $("#spnDecision").html("Hidden");
                 break;
         }
-        $("#spnQNum").text(++qctr);
+        $("#spnQNum").text(qctr + 1);
         $("#spnQText").html(q.question);
         $("#spnAnsA").html(q.answer_a);
         $("#spnAnsB").html(q.answer_b);
@@ -185,7 +193,7 @@
             });
 
             change_background();
-            currq = questions[qctr]['RoundAnswer'];
+            currq = questions[++qctr]['RoundAnswer'];
             load_question(currq);
             max_time = 10;
             cinterval = setInterval("countdown_timer()", gameSpeed);
@@ -448,11 +456,11 @@
     h3 {
         margin: 0;
     }
-    
+
     .answer {
         padding: 3px;
     }
-    
+
     #answers {
         width: 80%;
         text-align: center;

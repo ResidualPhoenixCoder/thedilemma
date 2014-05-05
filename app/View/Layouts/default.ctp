@@ -75,6 +75,9 @@
     </head>
 
     <body>
+        <div id="logo">
+	<a href="<?php echo Router::url(array('controller' => 'dilemmas', 'action' => 'index', 'dilemma_splash')); ?>"><?php echo $this->Html->image('logo_small.png'); ?></a>
+</div>
         <div id="main" class="main">
             <?php echo $this->fetch("content"); ?>
             <div id="footer">

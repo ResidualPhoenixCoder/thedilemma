@@ -27,11 +27,18 @@ class LobbyController extends AppController{
             $stat['hide'] = number_format(floor(($player['hide'] / $total) * 100), 0);
             $stat['share'] = number_format(floor(($player['share'] / $total) * 100), 0);
             $stat['lie'] = number_format(floor(($player['lie'] / $total) * 100), 0);
+            $stat['wins'] = $player['wins'];
+            $stat['draws'] = $player['draws'];
+            $stat['losses'] = $player['games'] - $player['wins'] - $player['draws'];
         } else {
             $stat['hide'] = '--';
             $stat['share'] = '--';
             $stat['lie'] = '--';
+            $stat['wins'] = '--';
+            $stat['draws'] = '--';
+            $stat['losses'] = '--';
         }
+        $this->set('player', $player['username']);
         $this->set('stat', $stat);
     }
     

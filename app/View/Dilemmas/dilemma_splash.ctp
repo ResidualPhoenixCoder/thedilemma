@@ -18,7 +18,7 @@
 	}
 </style>
 
-<h1>THE DILEMMA</h1>
+<?php echo $this->Html->image('logo.png', array('alt' => 'The Dilemmas', 'width' => '390px', 'height' => '250px')); ?>
 <p class="block">
 The Dilemma is a trivia game played between two players at a time. 
 A question is presented to both players at which point each player has ten seconds 

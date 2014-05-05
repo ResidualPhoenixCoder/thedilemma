@@ -140,8 +140,8 @@
 <style>
     #main {
         width: 550px;
-/*        margin-top: -450px;*/
-/*        margin-left: -275px;*/
+        /*        margin-top: -450px;*/
+        /*        margin-left: -275px;*/
         margin-bottom: 80px;
     }
 
@@ -175,8 +175,8 @@
 
     .bot-progress-label {
         position: absolute;
-        left: 30%;
-        top: 240px;
+        left: 45%;
+        top: 255px;
         /*        left: 58%;
                 top: 265px;*/
         font-weight: bold;
@@ -221,7 +221,7 @@
     }
 </style>
 
-<h1>The Dilemma LOBBY</h1>
+<h1><?php echo $player; ?>'s Lobby</h1>
 <div id="descript" class="description">
     <p>
         In each game, you will have 10 second to answer a choice question, and then you can choose your action button to influence your opponent. The best strategy is that you get the right answer and make your opponent get the wrong answer. Then you can get the full points in this game. Don’t forget the opponent’s profile. It can help you analyze your opponent’s strategy. In the profile, there are history records of cheat, share and hide for this player. For example, if your opponent’s cheat percentage is high, that means this player is good at influence other players. You should rethink your opponent’s answer if it is post. Every day, there are some special questions. Try it! You can get special credits! 
@@ -240,9 +240,13 @@
 <div id="second_menu" style="text-align:left;"><button id="bot">Run a Bot Simulation</button><br><button id="player">Get Random Set of Players</button></div><br />
 <div id="playerStats">
     <table id="stats">
-        <tr><td><b>My Hides</b></td><td><b>My Shares</b></td><td><b>My Lies</b></td></tr>
-        <tr><td colspan="3"> <hr></td></tr>
+        <tr><td><b>My Hides</b></td><td><b>My Shares</b></td><td><b>My Lies</b></td><td></tr>
+        <tr><td colspan="4"> <hr></td></tr>
         <tr><td><?php echo $stat['hide']; ?>%</td><td><?php echo $stat['share']; ?>%</td><td><?php echo $stat['lie']; ?>%</td></tr>
+        <tr><td colspan="3">&nbsp;</tr>
+        <tr><td><b>My Wins</b></td><td><b>My Losses</b></td><td><b>My Draws</b></td></tr>
+        <tr><td colspan="4"> <hr></td></tr>
+        <tr><td><?php echo $stat['wins']; ?></td><td><?php echo $stat['losses']; ?></td><td><?php echo $stat['draws']; ?></td></tr>
     </table>
 </div>
 <form id="form_round_start" method="post" action="<?php echo Router::url(array('controller' => 'game', 'action' => 'rounds')); ?>">

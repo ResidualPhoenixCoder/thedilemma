@@ -11,6 +11,9 @@
     </head>
 
     <body>
+                <div id="logo">
+	<?php echo $this->Html->image('logo_small.png'); ?>
+</div>
         <div id="wrapper">
             <?php echo $this->fetch("content"); ?>
         </div>
