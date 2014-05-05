@@ -48,29 +48,36 @@ class BotController extends AppController {
         $playerAnswers = array('a', 'b', 'c', 'd');
         $playerActions = array('H', 'S', 'L');
 
-        $data = array('Player' => array());
-        for ($botCtr = 0; $botCtr < $numBots; $botCtr++) {
-            $newBot = array();
-            $newBot['username'] = uniqid('bot_');
-            $newBot['password'] = uniqid();
-            $newBot['email'] = $newBot['username'] . "@bot.com";
-            $newBot['clan_tag'] = 'bot';
-            $newBot['role'] = 'bot';
-            array_push($data['Player'], $newBot);
-        }
+        $botData = $this->Player->find('all', array(
+            'conditions' => array('Player.role' => 'bot'), 
+            'order' => 'rand()', 
+            'limit' => $numBots));
+        
+        if (sizeof($botData) <$numBots) {
+            $data = array('Player' => array());
+            for ($botCtr = 0; $botCtr < $numBots; $botCtr++) {
+                $newBot = array();
+                $newBot['username'] = uniqid('bot_');
+                $newBot['password'] = uniqid();
+                $newBot['email'] = $newBot['username'] . "@bot.com";
+                $newBot['clan_tag'] = 'bot';
+                $newBot['role'] = 'bot';
+                array_push($data['Player'], $newBot);
+            }
 
-        try {
-            $this->Player->create();
-            $this->Player->saveAll($data['Player']);
-        } catch (Exception $e) {
-            
+            try {
+                $this->Player->create();
+                $this->Player->saveAll($data['Player']);
+            } catch (Exception $e) {
+                
+            }
         }
 
         //SIMULATION DRIVER
         for ($i = 0; $i < $numSims; $i++) {
             //Retrieve 2 random players.
             $players = $this->Player->find('all', array(
-                'conditions' => array('Player.role' => 'bot'),
+//                'conditions' => array('Player.role' => 'bot'),
                 'order' => 'rand()',
                 'limit' => 2
             ));
@@ -79,7 +86,7 @@ class BotController extends AppController {
             try {
                 $this->Player->create();
                 $this->Player->save($players[0]['Player']);
-                
+
                 $this->Player->create();
                 $this->Player->save($players[1]['Player']);
             } catch (Exception $e) {
@@ -88,7 +95,7 @@ class BotController extends AppController {
         }
 
         $returnData = $this->Player->find('all', array(
-            'conditions' => array('Player.role' => 'bot', 'Player.games >' => 0),
+            'conditions' => array('Player.games >' => 0),
             'order' => 'rand()',
             'limit' => $numBots
         ));
@@ -128,9 +135,9 @@ class BotController extends AppController {
                     
                 }
             }
-            
-            $p1['games']++;
-            $p2['games']++;
+
+            $p1['games'] ++;
+            $p2['games'] ++;
         }
     }
 
@@ -152,14 +159,14 @@ class BotController extends AppController {
 
         $this->act_handler($p1, $rnd['player_act'], $rnd['player_lie_answer'], $rnd['player_true_answer'], $playerAnswers);
         $this->act_handler($p2, $rnd['opponent_act'], $rnd['opponent_lie_answer'], $rnd['opponent_true_answer'], $playerAnswers);
-        
+
         $this->correct_handler($p1, $q['correct_answer'], $rnd['player_true_answer']);
         $this->correct_handler($p2, $q['correct_answer'], $rnd['opponent_true_answer']);
     }
-    
+
     private function correct_handler(&$p, $rightAns, $ans) {
-        if($rightAns == $ans) {
-            $p['correct']++;
+        if ($rightAns == $ans) {
+            $p['correct'] ++;
         }
     }
 

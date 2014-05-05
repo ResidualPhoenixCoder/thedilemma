@@ -464,6 +464,7 @@
         margin-right: auto;
         text-align: left;
         font-size: 80%;
+        width: 100%;
     }
 
     #music {
@@ -480,12 +481,18 @@
 
     .answer {
         padding: 3px;
+        font-size:15px
     }
 
     #answers {
         width: 80%;
         text-align: center;
     }
+
+    #spnQText {
+        font-size: 20px
+    }
+
 </style>
 
 <div id="wrapper">

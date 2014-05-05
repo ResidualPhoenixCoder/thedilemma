@@ -60,7 +60,7 @@
                             pgbar.hide();
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
-                            alert("Server is unavailable. Error: " + jqXHR.responseText);
+                            alert("Server is unavailable. " + errorThrown + "Error: " + jqXHR.responseText);
                         }
                     });
                 });
