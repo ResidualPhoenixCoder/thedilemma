@@ -410,26 +410,6 @@
         /*width: 100%*/
     }
 
-    #score {
-        border: 10px solid;
-        border-color: #4A96AD;
-        background-color: #7D1935;
-        box-shadow: 8px 8px 15px black;
-        border-radius: 20px;
-        margin-left: auto;
-        margin-right: auto;
-        font-weight: bold;
-        padding: 10px;
-    }
-
-    #score table {
-        width:100%;
-        border: 0px;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-    }
-
     #stats {
         /*width: 35%;*/
         border: 10px solid;
@@ -515,21 +495,23 @@
         <span id="countdown">10</span>
     </div>
 
-    <div id="score" class="main-arena">
+
+    <div id="stats" class="main-arena">
         <table>
-            <tr><td colspan="2"><h2>SCORE</h2><hr></td></tr>
+            <tr><td colspan="3"><h3><span id="playerName_profile" class="playerName">Fellow Prisoner</span>'s Profile</h3><hr></td></tr>
             <tr>
-                <td align="center"><b>YOU</b></td>
-                <td align="center"><b>THEM</b></td>
+                <td><b>HIDE</b></td>
+                <td><b>SHARE</b></td>
+                <td><b>LIE</b></td>
             </tr>
-            <tr><td colspan="2"><hr></td></tr>
+            <tr><td colspan="3"><hr></td></tr>
             <tr>
-                <td align="center"><font size="6"><b><span id="youScore">0</span></b></font></td>
-                <td align="center"><font size="6"><b><span id="themScore">0</span></b></font></td>
+                <td><font size="4"><b><span id="hideStat">33%</span></b></font></td>
+                <td><font size="4"><b><span id="shareStat">33%</span></b></font></td>
+                <td><font size="4"><b><span id="lieStat">33%</span></b></font></td>
             </tr>
         </table>
     </div><br />
-
     <div id="prompt" class="main-arena">
         <span id="spnQLbl"><h2>Question <span id="spnQNum">1</span></h2></span>
         <hr>
@@ -556,22 +538,6 @@
             <input type="radio" name="rgActionSet" id="rdoShare" value="S"><label for="rdoShare">SHARE</label>
             <input type="radio" name="rgActionSet" id="rdoLie" value="L"><label for="rdoLie">LIE</label>
         </div>
-    </div><br />
-    <div id="stats" class="main-arena">
-        <table>
-            <tr><td colspan="3"><h3><span id="playerName_profile" class="playerName">Fellow Prisoner</span>'s Profile</h3><hr></td></tr>
-            <tr>
-                <td><b>HIDE</b></td>
-                <td><b>SHARE</b></td>
-                <td><b>LIE</b></td>
-            </tr>
-            <tr><td colspan="3"><hr></td></tr>
-            <tr>
-                <td><font size="4"><b><span id="hideStat">33%</span></b></font></td>
-                <td><font size="4"><b><span id="shareStat">33%</span></b></font></td>
-                <td><font size="4"><b><span id="lieStat">33%</span></b></font></td>
-            </tr>
-        </table>
     </div><br />
     <div id="music">
         <audio autoplay="autoplay" type="hidden" controls>
