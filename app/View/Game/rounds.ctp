@@ -416,8 +416,6 @@
         padding: 10px;
     }
 
-
-
     #prompt {
         /*width: 35%;*/
         border: 10px solid;
@@ -450,6 +448,15 @@
     h3 {
         margin: 0;
     }
+    
+    .answer {
+        padding: 3px;
+    }
+    
+    #answers {
+        width: 80%;
+        text-align: center;
+    }
 </style>
 
 <div id="wrapper">
@@ -479,12 +486,10 @@
         <hr>
         <span><h3><span id="playerName_decision" class="playerName">Fellow Prisoner</span>'s  Answer: <br /><b><span id="spnDecision">HIDDEN</span></b></h3></span>
         <hr><br />
-        <span id="spnQText">You have been denied a question...</span>
-        <table>
-            <tr><td>A:</td><td><span id="spnAnsA">Deadly Answer A</span></td></tr>
-            <tr><td>B:</td><td><span id="spnAnsB">Deadly Answer B</span></td><tr>
-            <tr><td>C:</td><td><span id="spnAnsC">Deadly Answer C</span></td></tr>
-            <tr><td>D:</td><td><span id="spnAnsD">Deadly Answer D</span></td></tr>
+        <span id="spnQText">You have been denied a question...</span><br />
+        <table id="answers" cellpadding="3" cellspacing="4">
+            <tr><td class="answer"><b>A.</b> <span id="spnAnsA">Deadly Answer A</span></td><td class="answer"><b>B.</b> <span id="spnAnsB">Deadly Answer B</span></td></tr>
+            <tr><td class="answer"><b>C.</b> <span id="spnAnsC">Deadly Answer C</span></td><td class="answer"><b>D.</b> <span id="spnAnsD">Deadly Answer D</span></td></tr>
         </table><br />
 
         <div id="rgAnswer">
