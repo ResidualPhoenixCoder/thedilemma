@@ -48,7 +48,7 @@ class LobbyController extends AppController{
             $this->autoRender = false;
             $this->loadModel('Player');
             $data = $this->Player->find('all', array(
-                'conditions' => array('Player.games >' => 0, 'Player.role' => 'real', 'Player.pid <>' => $this->Auth->user('pid')),
+                'conditions' => array('Player.games >' => 0, 'Player.pid <>' => $this->Auth->user('pid')),
                 'order' => 'rand()',
                 'limit' => $numPlayer
             ));
