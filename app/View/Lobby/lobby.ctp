@@ -138,6 +138,12 @@
     }
 </script>
 <style>
+    #main {
+        width: 550px;
+        margin-top: -300px;
+        margin-left: -275px;
+    }
+
     #btn_play {
         margin-top: 10px;
         width: 500px;
@@ -168,8 +174,10 @@
 
     .bot-progress-label {
         position: absolute;
-        left: 58%;
-        top: 265px;
+        left: 30%;
+        top: 75px;
+/*        left: 58%;
+        top: 265px;*/
         font-weight: bold;
         text-shadow: 1px 1px 0 #fff;
     }
@@ -196,12 +204,12 @@
         margin: 0 auto 0 auto;
         text-align: center;
     }
-    
+
     #descript {
         text-align: center;
         margin: 10px;
     }
-    
+
     #descript p{
         font-size:15px;
     }
