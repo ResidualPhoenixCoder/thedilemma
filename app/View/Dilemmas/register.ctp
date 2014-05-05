@@ -92,7 +92,7 @@ $(function() {
                         url: "<?php echo Router::url(array('controller' => 'dilemmas', 'action' => 'register')); ?>",
                         data: formData,
                         success : function (data, textStatus, jqXHR) {
-                            alert(data);
+//                            alert(data);
                             var rdata = JSON.parse(data);
                             if(rdata.error) {
                                 showErrorMsg(rdata.errorMsg);
