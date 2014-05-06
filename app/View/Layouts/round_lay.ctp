@@ -21,8 +21,8 @@
             background-color: #212121;
             box-shadow: 8px 8px 15px black;
             border-radius: 20px;
-/*            margin-left: auto;
-            margin-right: auto;*/
+            /*            margin-left: auto;
+                        margin-right: auto;*/
             font-weight: bold;
             padding: 10px;
             width: 190px;
@@ -40,7 +40,9 @@
         <div id="logo">
             <?php echo $this->Html->image('logo_small.png'); ?>
         </div>
-
+        <div id="lookup">
+            <?php echo $this->Html->image('lookup.png'); ?>
+        </div>
         <div id="score" class="main-arena">
             <table>
                 <tr><td colspan="2"><h2>SCORE</h2><hr></td></tr>

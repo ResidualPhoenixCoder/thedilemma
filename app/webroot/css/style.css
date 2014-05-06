@@ -74,3 +74,13 @@ label {
     top: 0px;
     left: 0px;
 }
+
+#lookup {
+    position: absolute;
+    border: 0px;
+    padding: 5px;
+    margin: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: -1;
+}
