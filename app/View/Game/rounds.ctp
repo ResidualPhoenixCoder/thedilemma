@@ -275,7 +275,8 @@
         var opponentAction = currq.player_act;
 
         if (playerAction === "S" && opponentAction === "S") {
-            var sAns = (Math.floor(Math.random() * 2) % 2) ? playerAnswer : currq.player_true_answer;
+//            var sAns = (Math.floor(Math.random() * 2) % 2) ? playerAnswer : currq.player_true_answer;
+            var sAns = currq.player_true_answer;
             if (sAns === currq.correct_answer) {
                 playerPoints += 6;
                 opponentPoints += 6;
