@@ -80,7 +80,7 @@ label {
     border: 0px;
     padding: 5px;
     margin: 0px;
-    bottom: 0px;
+    bottom: -10px;
     left: 0px;
     z-index: -1;
 }
